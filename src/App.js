@@ -8,6 +8,7 @@ import Signup from './Pages/Signup';
 import UserProfile from './Pages/UserProfile';
 import './App.css'
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 class App extends React.Component{
   constructor(props){
@@ -35,13 +36,15 @@ class App extends React.Component{
           activeUser = {this.state.activeUser}
           logout = {this.logout}
         />
-      
+      <Container>
       <Route exact path="/">
         <HomePage />
       </Route >
 
       <Route exact path="/forever">
-        <ForeverBook />      
+        <ForeverBook 
+          activeUser = {this.state.activeUser} 
+        />      
       </Route>
 
       <Route exact path="/signup">
@@ -55,7 +58,9 @@ class App extends React.Component{
       <Route exact path="/user">
         <UserProfile />   
       </Route>
+      </Container>
       </div>
+     
     </HashRouter>
   );
 }

@@ -6,6 +6,10 @@ class ForeverBook extends React.Component{
     }
 
     render(){
+        if( ! this.props.activeUser){
+            window.location.href = "/#/login"
+            return null
+        }
         return(
             <div className="p-forever">
                 ForeverBook
