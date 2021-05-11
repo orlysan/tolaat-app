@@ -32,10 +32,12 @@ class App extends React.Component{
   return (
     <HashRouter>
       <div className="p-app">
-      <TolaatNavbar
-          activeUser = {this.state.activeUser}
-          logout = {this.logout}
-        />
+        <Route exact path={["/" , "/forever"]}> 
+          <TolaatNavbar
+              activeUser = {this.state.activeUser}
+              logout = {this.logout}
+            />
+        </Route>
       <Container>
       <Route exact path="/">
         <HomePage />
