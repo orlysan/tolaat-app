@@ -6,7 +6,13 @@ class TolaatNavbar extends React.Component{
         super(props)
     }
 
+    
+
     render(){
+        const loginEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/login">התחברות</Nav.Link> : null;
+        const signupEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/signup">הרשמה</Nav.Link> : null;  
+        const signoutEl = (this.props.activeUser) ? <Nav.Link onClick={() => this.props.logout()} href="/#/user">התנתקות</Nav.Link> : null;
+       
         return(
             <Navbar expand="lg">
                 <Navbar.Brand href="/#/">תולעת ספרים</Navbar.Brand>
@@ -17,8 +23,9 @@ class TolaatNavbar extends React.Component{
             
             
                 <Navbar.Collapse className="justify-content-end">
-                    <Nav.Link href="/#/signup">הרשמה</Nav.Link>
-                    <Nav.Link href="/#/login">התחברות</Nav.Link>
+                    {loginEl}
+                    {signupEl}
+                    {signoutEl}
                 </Navbar.Collapse>
           </Navbar>
         )

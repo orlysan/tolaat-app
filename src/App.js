@@ -7,30 +7,58 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import UserProfile from './Pages/UserProfile';
 import './App.css'
+import React from 'react';
 
-function App() {
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      activeUser : {
+        id: 1,
+        name: 'orly',
+        email: 'orlysan1@gmail.com',
+        pwd: '123'
+      }
+    }
+  }
+
+  logout = () => {
+    this.setState({
+      activeUser : null
+    })
+  }
+  render(){
   return (
     <HashRouter>
       <div className="p-app">
-      <TolaatNavbar />
+      <TolaatNavbar
+          activeUser = {this.state.activeUser}
+          logout = {this.logout}
+        />
+      
       <Route exact path="/">
         <HomePage />
       </Route >
+
       <Route exact path="/forever">
         <ForeverBook />      
       </Route>
+
       <Route exact path="/signup">
         <Signup />   
       </Route>
+
       <Route exact path="/login">
         <Login />   
       </Route>
+
       <Route exact path="/user">
         <UserProfile />   
       </Route>
       </div>
     </HashRouter>
   );
+}
 }
 
 export default App;
