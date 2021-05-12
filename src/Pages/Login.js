@@ -6,19 +6,41 @@ import { Link } from 'react-router-dom';
 class Login extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+            email : '',
+            pwd : ''
+        }
     }
+
+    updateEmail = (event) => {
+        this.setState({
+            email : event.target.value
+        })
+    }
+
+    updatePwd = (event) => {
+        this.setState({
+            pwd : event.target.value
+        })
+    }
+    
 
     render(){
         return(
             <div className="p-login">
-                <h1 class="login-title">התחברות</h1>
+                <h1 className="login-title">התחברות</h1>
                 <Form className="login-form">
                     <Form.Group className="login-form-group" as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={2}>
                             אימייל
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="email" placeholder="אימייל" />
+                            <Form.Control 
+                                type="email" 
+                                placeholder="אימייל" 
+                                value={this.state.email}
+                                onChange={this.updateEmail}
+                            />
                         </Col>
                     </Form.Group>
 
@@ -27,7 +49,12 @@ class Login extends React.Component{
                            סיסמא
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="password" placeholder="סיסמא" />
+                            <Form.Control 
+                            type="password" 
+                            placeholder="סיסמא"
+                            value={this.state.pwd}
+                            onChange = {this.updatePwd}
+                            />
                         </Col>
                     </Form.Group>
   
@@ -37,14 +64,14 @@ class Login extends React.Component{
                         </Col>
                     </Form.Group>
 
-                    <Form.Group as={Row}>
+                    <Form.Group as={Row} >
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button type="button">התחבר</Button>
                         </Col>
                     </Form.Group>
                 </Form>
 
-                <Link to="/signup">הרשמה</Link>
+                <Link  to="/signup">הרשמה</Link>
             </div>
         )
     }
