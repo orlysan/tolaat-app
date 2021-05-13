@@ -5,35 +5,43 @@ class Signup extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            name: '',
-            email: '',
-            pwd: '',
-            aboutMe: '',
-            img: ''
+            newUser : {
+                name: '',
+                email: '',
+                pwd: '',
+                aboutMe: '',
+                img: ''
+            }
+           
         }
     }
 
     updateName = (e) => {
-        this.setState({ name: e.target.value})
+        this.setState(Object.assign(this.state.newUser,{ name: e.target.value}))
     }
 
     updateEmail = (e) => {
-        this.setState({ email: e.target.value})
+        this.setState(Object.assign(this.state.newUser,{ email: e.target.value}))
     }
 
     updatePwd = (e) => {
-        this.setState({ pwd: e.target.value})
+        this.setState(Object.assign(this.state.newUser,{ pwd: e.target.value}))
     }
 
     updateAboutme = (e) => {
-        this.setState({ aboutMe: e.target.value})
+        this.setState(Object.assign(this.state.newUser,{ aboutMe: e.target.value}))
     }
 
     updateImage = (e) => {
-        this.setState({ aboutMe: e.target.img})
+        this.setState(Object.assign(this.state.newUser,{ img: e.target.value}))
+    }
+
+    handleAddUser = () => {
+        this.props.addUser(this.state.newUser)
     }
 
     render(){
+        
         return(
             <div className='p-signup'>
                
@@ -116,6 +124,7 @@ class Signup extends React.Component{
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Button 
                             type="button"
+                            onClick={this.handleAddUser}
                             >הירשם</Button>
                         </Col>
                     </Form.Group>

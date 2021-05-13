@@ -23,11 +23,9 @@ class App extends React.Component{
 
   //get users data 
   componentDidMount = () => {
-    console.log("component did mount");
     fetch('/users.json')
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       this.setState({
         allUsers : data
       })
@@ -48,7 +46,15 @@ class App extends React.Component{
     })
   }
 
+  addUser = (newUser) =>{
+    this.setState({
+      allUsers : this.state.allUsers.concat(newUser)
+    })
+    window.location.href="/#/user"
+  }
+
   render(){
+    
   return (
     <HashRouter>
       <div className="p-app">
@@ -70,7 +76,9 @@ class App extends React.Component{
       </Route>
 
       <Route exact path="/signup">
-        <Signup />   
+        <Signup 
+        addUser={this.addUser}
+        />   
       </Route>
 
       <Route exact path="/login">
