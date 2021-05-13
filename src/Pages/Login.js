@@ -12,6 +12,8 @@ class Login extends React.Component{
         }
     }
 
+    
+
     updateEmail = (event) => {
         this.setState({
             email : event.target.value
@@ -23,7 +25,22 @@ class Login extends React.Component{
             pwd : event.target.value
         })
     }
-    
+
+    handleLogin = () => {
+      
+      const foundUser =  this.props.allUsers.find(user => {
+          console.log(user)
+           return user.pwd == this.state.pwd && user.email == this.state.email;   
+        })
+        debugger
+        if(foundUser){
+            this.props.login(foundUser);
+            window.location.href = "/#/user"
+        } else {
+            alert('error')
+        }
+    }
+  
 
     render(){
         return(
@@ -36,8 +53,7 @@ class Login extends React.Component{
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
-                                type="email" 
-                                placeholder="אימייל" 
+                                type="email" placeholder="אימייל" 
                                 value={this.state.email}
                                 onChange={this.updateEmail}
                             />
@@ -50,28 +66,25 @@ class Login extends React.Component{
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
-                            type="password" 
-                            placeholder="סיסמא"
+                            type="password" placeholder="סיסמא"
                             value={this.state.pwd}
                             onChange = {this.updatePwd}
                             />
                         </Col>
                     </Form.Group>
   
-                    <Form.Group as={Row} controlId="formHorizontalCheck" >
-                        <Col sm={{ span: 10, offset: 2 }} className="checkbox">
-                            <Form.Check label="Remember me" />
-                        </Col>
-                    </Form.Group>
 
-                    <Form.Group as={Row} >
-                        <Col sm={{ span: 10, offset: 2 }}>
-                            <Button type="button">התחבר</Button>
+                    <Form.Group as={Row} className="login-button">
+                        <Col sm={{ span: 2, offset: 10 }}>
+                            <Button 
+                            type="button"
+                            onClick={this.handleLogin}
+                            >התחבר</Button>
                         </Col>
                     </Form.Group>
                 </Form>
 
-                <Link  to="/signup">הרשמה</Link>
+                <Link  to="/signup" className="signup-from-login">הרשמה</Link>
             </div>
         )
     }

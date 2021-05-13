@@ -10,17 +10,36 @@ import './App.css'
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
+
+
 class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      activeUser : {
-        id: 1,
-        name: 'orly',
-        email: 'orlysan1@gmail.com',
-        pwd: '123'
-      }
+      allUsers :  [],
+      activeUser : null
     }
+  }
+
+  //get users data 
+  componentDidMount = () => {
+    console.log("component did mount");
+    fetch('/users.json')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      this.setState({
+        allUsers : data
+      })
+    })
+  }
+
+
+  login = (userObj) => {
+    console.log(userObj)
+    this.setState({
+      activeUser : userObj
+    })
   }
 
   logout = () => {
@@ -28,11 +47,12 @@ class App extends React.Component{
       activeUser : null
     })
   }
+
   render(){
   return (
     <HashRouter>
       <div className="p-app">
-        <Route exact path={["/" , "/forever"]}> 
+        <Route exact path={["/" , "/forever" , "/user"]}> 
           <TolaatNavbar
               activeUser = {this.state.activeUser}
               logout = {this.logout}
@@ -54,7 +74,9 @@ class App extends React.Component{
       </Route>
 
       <Route exact path="/login">
-        <Login />   
+        <Login 
+        allUsers = {this.state.allUsers}
+        login={this.login}/>   
       </Route>
 
       <Route exact path="/user">

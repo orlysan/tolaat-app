@@ -1,0 +1,14 @@
+
+.p-signup {
+    margin: auto;
+    max-width: 70%;
+    
+}
+.signup-form{
+    margin-top: 3rem;
+}
+
+.signup-form > h1{
+    text-align: center;
+    margin-bottom: 2rem;
+}
