@@ -1,4 +1,5 @@
 import React from 'react';
+import './BooksCategories.css'
 
 class BooksCategories extends React.Component{
     constructor(props){
@@ -7,8 +8,8 @@ class BooksCategories extends React.Component{
 
     render(){
         return(
-          <div className="books-categories">
-              BooksCategories
+          <div className="categories">
+            <h1>{this.props.category}</h1>     
           </div>
            
         )

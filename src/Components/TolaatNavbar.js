@@ -7,12 +7,15 @@ class TolaatNavbar extends React.Component{
         super(props)
     }
 
+    goToUser = () => {
+        window.location.href="/#/user"
+    }
     
 
     render(){
         const loginEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/login">התחברות</Nav.Link> : null;
         const signupEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/signup">הרשמה</Nav.Link> : null;  
-        const nameEl = (this.props.activeUser) ? <Navbar.Text>Hello {this.props.activeUser.name}</Navbar.Text> : null
+        const nameEl = (this.props.activeUser) ? <Nav.Link onClick={this.goToUser}>Hello {this.props.activeUser.name}</Nav.Link> : null
         const signoutEl = (this.props.activeUser) ? <Nav.Link onClick={() => this.props.logout()} href="/#/user">התנתקות</Nav.Link> : null;
        
         return(

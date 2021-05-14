@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Card, Row ,Col } from 'react-bootstrap';
 import UserGallery from '../Components/UserGallery';
 
 class UserProfile extends React.Component{
@@ -8,18 +8,23 @@ class UserProfile extends React.Component{
     }
 
     render(){
+        console.log(this.props.activeUser)
         return(
             <div className="p-user-profile">
-                <Card style={{ width: '70%' }}>
-                    <Card.Img variant="right" src="holder.js/171x180" roundedCircle />
-                    <Card.Body>
-                        <Card.Title>User name</Card.Title>
-                        <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
+                <Card className="profile-card">
+                    <Row>
+                        <Col sm={4}>
+                            <Card.Img className="card-img" variant="right" src={this.props.activeUser.img} roundedCircle />
+                        </Col>
+                        <Col sm={8}>
+                            <Card.Body>
+                                <Card.Title>{this.props.activeUser.name}</Card.Title>
+                                <Card.Text>
+                                    {this.props.activeUser.aboutMe}
+                                </Card.Text>
+                            </Card.Body>
+                        </Col>
+                    </Row>
                     
                 </Card>
                 <UserGallery />

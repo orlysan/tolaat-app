@@ -17,7 +17,14 @@ class App extends React.Component{
     super(props)
     this.state = {
       allUsers :  [],
-      activeUser : null
+      //activeUser : null
+      activeUser : {
+        name: 'Orly',
+        email: 'orlysan1@gmail.com',
+        pwd: '123',
+        aboutMe: 'my profile',
+        img: '/testImage.jpeg'
+      }
     }
   }
 
@@ -34,7 +41,6 @@ class App extends React.Component{
 
 
   login = (userObj) => {
-    console.log(userObj)
     this.setState({
       activeUser : userObj
     })
@@ -48,7 +54,8 @@ class App extends React.Component{
 
   addUser = (newUser) =>{
     this.setState({
-      allUsers : this.state.allUsers.concat(newUser)
+      allUsers : this.state.allUsers.concat(newUser),
+      activeUser : newUser
     })
     window.location.href="/#/user"
   }
@@ -88,7 +95,9 @@ class App extends React.Component{
       </Route>
 
       <Route exact path="/user">
-        <UserProfile />   
+        <UserProfile
+          activeUser={this.state.activeUser}
+        />   
       </Route>
       </Container>
       </div>

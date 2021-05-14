@@ -29,10 +29,9 @@ class Login extends React.Component{
     handleLogin = () => {
       
       const foundUser =  this.props.allUsers.find(user => {
-          console.log(user)
            return user.pwd == this.state.pwd && user.email == this.state.email;   
         })
-        debugger
+    
         if(foundUser){
             this.props.login(foundUser);
             window.location.href = "/#/user"

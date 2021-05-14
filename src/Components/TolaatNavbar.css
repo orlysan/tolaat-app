@@ -1,3 +1,7 @@
 .tolaat-navbar {
     direction: ltr;
+    position: sticky;
+    top: 0;
+    background-color: whitesmoke;
+    padding:0.5rem;
 }
