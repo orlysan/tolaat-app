@@ -3,6 +3,7 @@
     width: 15rem;
     background-color: white;
     border: solid rgb(190, 186, 194) 0.5px;
+    border-radius: 5%;
     margin:1rem;
     cursor: pointer;
     text-align: center;

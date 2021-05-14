@@ -3,24 +3,24 @@ import { Col, Row } from 'react-bootstrap';
 import BookCard from '../Components/BookCard';
 import CategoryHeader from '../Components/CategoryHeader';
 
-class ForeverBook extends React.Component{
+class NotForMe extends React.Component{
     constructor(props){
         super(props)
     }
 
     render(){
        
-    const card = this.props.book.filter(book => book.category == "forever")
+    const card = this.props.book.filter(book => book.category == "not-for-me")
    
     console.log(card)
               
         if( ! this.props.activeUser){
-            window.location.href = "/#/login"
+            window.location.href = "/#/not-for-me"
             return null
         }
         return(
-            <div className="p-forever">
-                <CategoryHeader categoryTitle="ספרים לזכור לנצח נצחים"/>
+            <div>
+                <CategoryHeader categoryTitle="כמו שאומרים בגן: זה לא לטעמי"/>
                 <Row>
                     <Col xs={6} md={4} lg={3}>
                         <BookCard />
@@ -31,4 +31,4 @@ class ForeverBook extends React.Component{
     }
 }
 
-export default ForeverBook;
+export default NotForMe;

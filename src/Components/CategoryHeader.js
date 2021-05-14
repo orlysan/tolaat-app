@@ -1,4 +1,5 @@
 import React from 'react';
+import './CategoryHeader.css';
 
 class CategoryHeader extends React.Component{
     constructor(props){
@@ -7,8 +8,8 @@ class CategoryHeader extends React.Component{
 
    render(){
        return (
-           <div>
-               <img src="./homePageTitle.jpg" className="category-img"/>
+           <div className="category-heder">
+               <img src="./homePageTitle.jpg" />
                <h1>{this.props.categoryTitle}</h1>
            </div>
        )

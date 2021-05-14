@@ -9,6 +9,9 @@ import UserProfile from './Pages/UserProfile';
 import './App.css'
 import React from 'react';
 import { Container } from 'react-bootstrap';
+import Week from './Pages/Week';
+import Reasonable from './Pages/Reasonable';
+import NotForMe from './Pages/NotForMe';
 
 
 
@@ -76,7 +79,7 @@ class App extends React.Component{
   return (
     <HashRouter>
       <div className="p-app">
-        <Route exact path={["/" , "/forever" , "/user"]}> 
+        <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me", "/user"]}> 
           <TolaatNavbar
               activeUser = {this.state.activeUser}
               logout = {this.logout}
@@ -89,6 +92,27 @@ class App extends React.Component{
 
       <Route exact path="/forever">
         <ForeverBook 
+          activeUser = {this.state.activeUser}
+          book = {this.state.allBooks} 
+        />      
+      </Route>
+
+      <Route exact path="/week">
+        <Week 
+          activeUser = {this.state.activeUser}
+          book = {this.state.allBooks} 
+        />      
+      </Route>
+
+      <Route exact path="/reasonable">
+        <Reasonable 
+          activeUser = {this.state.activeUser}
+          book = {this.state.allBooks} 
+        />      
+      </Route>
+
+      <Route exact path="/not-for-me">
+        <NotForMe 
           activeUser = {this.state.activeUser}
           book = {this.state.allBooks} 
         />      

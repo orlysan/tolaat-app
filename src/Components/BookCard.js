@@ -6,8 +6,10 @@ class BookCard extends React.Component{
         super(props)
     }
 
+  
+
     render(){
-        
+       
         return(
             <Card>
                 <Card.Img src="holder.js/100px270" alt="Card image" />
