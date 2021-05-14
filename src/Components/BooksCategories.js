@@ -6,9 +6,15 @@ class BooksCategories extends React.Component{
         super(props)
     }
 
+    
+    clickCtegory = () => {
+      console.log(this.props.goto)
+     window.location.href=`/#/${this.props.goto}`
+    }
+
     render(){
         return(
-          <div className="categories">
+          <div className="categories" onClick={this.clickCtegory}>
             <h1>{this.props.category}</h1>     
           </div>
            

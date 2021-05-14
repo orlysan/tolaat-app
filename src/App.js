@@ -17,6 +17,7 @@ class App extends React.Component{
     super(props)
     this.state = {
       allUsers :  [],
+      allBooks : [],
       //activeUser : null
       activeUser : {
         name: 'Orly',
@@ -28,13 +29,23 @@ class App extends React.Component{
     }
   }
 
-  //get users data 
+  
   componentDidMount = () => {
+    //get users data 
     fetch('/users.json')
     .then(res => res.json())
     .then(data => {
       this.setState({
         allUsers : data
+      })
+    })
+
+    //get books data
+    fetch('books.json')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        allBooks :data
       })
     })
   }
@@ -78,7 +89,8 @@ class App extends React.Component{
 
       <Route exact path="/forever">
         <ForeverBook 
-          activeUser = {this.state.activeUser} 
+          activeUser = {this.state.activeUser}
+          book = {this.state.allBooks} 
         />      
       </Route>
 

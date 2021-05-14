@@ -33,10 +33,22 @@ class HomePage extends React.Component{
                 </div>
 
                 <div className="books-categories">
-                    <BooksCategories category= "כמו שאומרים בגן: זה לא לטעמי"/>
-                    <BooksCategories category="ספרים להעביר איתם בידוד בסביר"/>
-                    <BooksCategories category="ספרים שיגרמו לכם לפספס שבוע מהחיים (בקטע טוב)"/>
-                    <BooksCategories category="ספרים שתזכרו לנצח נצחים"/>
+                    <BooksCategories 
+                        category= "כמו שאומרים בגן: זה לא לטעמי"
+                        goto="not-for-me"
+                        />
+                    <BooksCategories 
+                        category="ספרים להעביר איתם בידוד בסביר"
+                        goto="reasonable"
+                        />
+                    <BooksCategories 
+                        category="ספרים שיגרמו לכם לפספס שבוע מהחיים (בקטע טוב)"
+                        goto="week"
+                        />
+                    <BooksCategories 
+                        category="ספרים שתזכרו לנצח נצחים"
+                        goto="forever"
+                        />
                 </div>
 
                 <div className="summary"> 
