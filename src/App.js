@@ -79,7 +79,7 @@ class App extends React.Component{
   return (
     <HashRouter>
       <div className="p-app">
-        <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me", "/user"]}> 
+        <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me",   "/user"]}> 
           <TolaatNavbar
               activeUser = {this.state.activeUser}
               logout = {this.logout}

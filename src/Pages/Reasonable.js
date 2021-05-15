@@ -8,22 +8,30 @@ class Reasonable extends React.Component{
         super(props)
     }
 
+    getBooksCategory = () => {
+        const card = this.props.book.filter(book => {
+            if(book.category == "reasonable"){
+                return true;
+            }
+        })
+       return card
+    }  
+
     render(){
-       
-    const card = this.props.book.filter(book => book.category == "reasonable")
-   
-    console.log(card)
-              
+     
         if( ! this.props.activeUser){
-            window.location.href = "/#/reasonable"
+            window.location.href = "/#/login"
             return null
         }
+
+        const getBook = this.getBooksCategory()           
+
         return(
             <div>
                 <CategoryHeader categoryTitle="ספרים שיעבירו לכם בידוד בסביר"/>
                 <Row>
                     <Col xs={6} md={4} lg={3}>
-                        <BookCard />
+                        <BookCard getBook = {getBook}/>
                     </Col>
                 </Row>
             </div>

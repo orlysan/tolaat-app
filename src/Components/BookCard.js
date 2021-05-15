@@ -1,21 +1,44 @@
 import React from 'react';
+import { Modal , Button } from 'react-bootstrap';
 import './BookCard.css'
 
 class BookCard extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+            isModalOpen : false
+        }
     }
+    //open and close modal function
+    openModal = () => {this.setState({isModalOpen :true})}
+    handleClose = () => {this.setState({isModalOpen :false})}
 
-  
 
     render(){
-       
-        return(
-            <div className="book-card">
-                <img src="https://upload.wikimedia.org/wikipedia/he/e/ed/%D7%97%D7%99%D7%99_%D7%A4%D7%90%D7%99.jpg" alt="Card image"></img>
-            </div>
+
+     //map book list  
+     const book =  this.props.getBook.map(book => {
+        return (
+            <div className="book-card" onClick={this.openModal}>
+                <img src={book.img} alt={book.alt}></img>
             
+                <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
+                    <Modal.Body>{book.review}
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleClose}>
+                        סגור
+                    </Button>
+                    <Button variant="primary" onClick={this.addBook}>
+                        הוסף לרשימה שלי
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
         )
+     })
+    
+        return <div>{book}</div> 
     }
 }
 
