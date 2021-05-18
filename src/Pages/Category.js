@@ -3,25 +3,25 @@ import { Col, Row } from 'react-bootstrap';
 import BookCard from '../Components/BookCard';
 import CategoryHeader from '../Components/CategoryHeader';
 
-class Week extends React.Component{
+class Category extends React.Component{
     constructor(props){
         super(props)
     }
 
-           
     getBooksCategory = () => {
         const card = this.props.book.filter(book => {
-            if(book.category == "week"){
+            if(book.category ==  this.props.category){
                 return true;
             }
         })
        return card
-    }  
-
-    render(){
-
-   
-              
+    } 
+    
+    userBook = (id) =>{
+        console.log(id)
+    }
+    
+    render(){         
         if( ! this.props.activeUser){
             window.location.href = "/#/login"
             return null
@@ -30,11 +30,14 @@ class Week extends React.Component{
         const getBook = this.getBooksCategory()
        
         return(
-            <div>
-                <CategoryHeader categoryTitle="ספרים שיגרמו לכם לפספס שבוע מהחיים (בקטע טוב)"/>
+            <div className="p-forever">
+                <CategoryHeader categoryTitle={this.props.title}/>
                 <Row>
-                    <Col xs={6} md={4} lg={3}>
-                        <BookCard getBook = {getBook}/>
+                    <Col>
+                        <BookCard 
+                            getBook = {getBook}
+                            userBook = {this.userBook}
+                            />
                     </Col>
                 </Row>
             </div>
@@ -42,4 +45,4 @@ class Week extends React.Component{
     }
 }
 
-export default Week;
+export default Category;

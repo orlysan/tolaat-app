@@ -54,9 +54,9 @@ class HomePage extends React.Component{
                 <div className="summary"> 
                     <p>האתר עדיין בהרצה וגם יש לי חיים לתחזק. מבטיחה להעלות פה כל ספר חדש שאקרא</p>
                     <p>מוזמנים להגיב ולכתוב לי</p>
-                    <p>michal_mor_1@yahoo.com</p>
+                    <a href="mailto:michal_mor_1@yahoo.com" target="_blank">michal_mor_1@yahoo.com</a >
                     <h3>תהנו!</h3>
-                    <span class="material-icons">facebook</span>
+                    <span class="material-icons"><a href="fb://tolaatsfarim.michal" target="_blank"></a>facebook</span>
                 </div>
                 
             </Container>

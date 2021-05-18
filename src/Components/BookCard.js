@@ -4,9 +4,9 @@ import './BookCard.css'
 
 class BookCard extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
-            isModalOpen : false
+            isModalOpen : false,
         }
     }
     //open and close modal function
@@ -14,14 +14,21 @@ class BookCard extends React.Component{
     handleClose = () => {this.setState({isModalOpen :false})}
 
 
+    //chose book for user favorite list
+    addBook = (id) => { 
+        
+        this.props.userBook(id)
+    }   
+
     render(){
 
      //map book list  
      const book =  this.props.getBook.map(book => {
+    
         return (
+          
             <div className="book-card" onClick={this.openModal}>
                 <img src={book.img} alt={book.alt}></img>
-            
                 <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
                     <Modal.Body>{book.review}
                     </Modal.Body>
@@ -29,12 +36,13 @@ class BookCard extends React.Component{
                     <Button variant="secondary" onClick={this.handleClose}>
                         סגור
                     </Button>
-                    <Button variant="primary" onClick={this.addBook}>
+                    <Button variant="primary" onClick={() => this.addBook(book.id)}>
                         הוסף לרשימה שלי
                     </Button>
                     </Modal.Footer>
                 </Modal>
             </div>
+
         )
      })
     

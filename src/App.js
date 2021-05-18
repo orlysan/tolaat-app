@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HashRouter, Route } from 'react-router-dom';
 import TolaatNavbar from './Components/TolaatNavbar';
-import ForeverBook from './Pages/ForeverBooks';
 import HomePage from './Pages/HomePage';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
@@ -9,9 +8,9 @@ import UserProfile from './Pages/UserProfile';
 import './App.css'
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Week from './Pages/Week';
-import Reasonable from './Pages/Reasonable';
-import NotForMe from './Pages/NotForMe';
+import SingleBook from './Pages/SingleBook';
+import Category from './Pages/Category';
+//import Category from './Pages/Category';
 
 
 
@@ -21,6 +20,7 @@ class App extends React.Component{
     this.state = {
       allUsers :  [],
       allBooks : [],
+      bestBooks:  [],
       //activeUser : null
       activeUser : {
         name: 'Orly',
@@ -53,19 +53,23 @@ class App extends React.Component{
     })
   }
 
-
+//login
   login = (userObj) => {
     this.setState({
       activeUser : userObj
     })
   }
 
+
+  //logout
   logout = () => {
     this.setState({
       activeUser : null
     })
   }
 
+
+  //signup
   addUser = (newUser) =>{
     this.setState({
       allUsers : this.state.allUsers.concat(newUser),
@@ -73,6 +77,7 @@ class App extends React.Component{
     })
     window.location.href="/#/user"
   }
+
 
   render(){
     
@@ -87,35 +92,51 @@ class App extends React.Component{
         </Route>
       <Container>
       <Route exact path="/">
-        <HomePage />
-      </Route >
-
-      <Route exact path="/forever">
-        <ForeverBook 
+        <HomePage 
           activeUser = {this.state.activeUser}
           book = {this.state.allBooks} 
+        />
+      </Route >
+     
+      <Route exact path="/forever">
+      <Category
+         activeUser = {this.state.activeUser}
+         book = {this.state.allBooks}
+         title ="ספרים לזכור לנצח נצחים"
+         category="forever"
         />      
       </Route>
 
       <Route exact path="/week">
-        <Week 
+        <Category
           activeUser = {this.state.activeUser}
-          book = {this.state.allBooks} 
-        />      
+          book = {this.state.allBooks}
+          title ="ספרים שיגרמו לכם לפספס שבוע מהחיים"
+          category="week"
+          />   
       </Route>
 
       <Route exact path="/reasonable">
-        <Reasonable 
-          activeUser = {this.state.activeUser}
-          book = {this.state.allBooks} 
-        />      
+        <Category
+         activeUser = {this.state.activeUser}
+         book = {this.state.allBooks}
+         title ="ספרים שיעבירו לכם בידוד בסביר"
+         category="reasonable"
+        />  
       </Route>
 
+  
       <Route exact path="/not-for-me">
-        <NotForMe 
+        <Category
           activeUser = {this.state.activeUser}
-          book = {this.state.allBooks} 
-        />      
+          book = {this.state.allBooks}
+          title ="כמו שאומרים בגן: זה לא לטעמי"
+          category="not-for-me"
+          />       
+      </Route>
+
+      <Route exact path="/books/:id">
+        <SingleBook allBooks={this.state.allBooks}/>
       </Route>
 
       <Route exact path="/signup">
@@ -131,10 +152,17 @@ class App extends React.Component{
       </Route>
 
       <Route exact path="/user">
+        
         <UserProfile
           activeUser={this.state.activeUser}
         />   
       </Route>
+
+{/* 
+      <Route>
+        <Category />
+      </Route>
+*/}
       </Container>
       </div>
      

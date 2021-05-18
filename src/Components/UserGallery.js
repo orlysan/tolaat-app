@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 class UserGallery extends React.Component{
     constructor(props){
         super(props)
+       
     }
 
     render(){
