@@ -12,6 +12,10 @@ class SingleBook extends React.Component{
     addToFavorite = (book) => {
         console.log(book)
     }
+
+    goBack = () => {
+        window.history.back();
+    }
     render(){
         const bookList = this.props.allBooks;
         const bookId = this.props.match.params.id;
@@ -30,7 +34,7 @@ class SingleBook extends React.Component{
             </div>
             <div className="buttons-section">
                 <Button type="button" onClick={() => this.addToFavorite(book)}>הוסף למועדפים שלי</Button>
-                <Button type="button">סגור</Button>
+                <Button type="button" onClick={this.goBack}>סגור</Button>
             </div>
         </div> 
    
