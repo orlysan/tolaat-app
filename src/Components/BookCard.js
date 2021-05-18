@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleBook from '../Pages/SingleBook';
+import { Card, Col, Row } from 'react-bootstrap';
 import './BookCard.css'
 
 class BookCard extends React.Component{
@@ -18,7 +18,11 @@ class BookCard extends React.Component{
     addBook = (id) => { 
         
         this.props.userBook(id)
-    }   
+    }  
+    
+    goToSingleBook = (e) =>{
+        window.location.href="/#/books/"+e.target.id
+    }
 
     render(){
 
@@ -26,30 +30,19 @@ class BookCard extends React.Component{
      const book =  this.props.getBook.map(book => {
     
         return (
-          
-            <div className="book-card">
-                <img src={book.img} alt={book.alt}></img>
-                <SingleBook />
-               {/*  
-               <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
-                    <Modal.Body>{book.review}
-                    </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
-                        סגור
-                    </Button>
-                    <Button variant="primary" onClick={() => this.addBook(book.id)}>
-                        הוסף לרשימה שלי
-                    </Button>
-                    </Modal.Footer>
-                </Modal>
-                */}
-            </div>
-
+           <img src={book.img} alt={book.alt} onClick={this.goToSingleBook} id={book.id}></img>       
         )
+        
      })
     
-        return <div>{book}</div> 
+        return (
+            <Row>
+                <Col xs={6} md={4} lg={2} className="book-card">
+                    {book}
+                </Col>
+            </Row>
+        )
+     
     }
 }
 

@@ -1,0 +1,20 @@
+.p-singleBook{
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+    width: 40rem;
+    height: 30rem;
+    background-color: #e8cfc8;
+}
+
+.book-review{
+    height: 90%;
+}
+
+.buttons-section{
+   margin:auto;
+}
+
+.buttons-section button {
+    margin:1rem;
+}

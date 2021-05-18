@@ -10,7 +10,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import SingleBook from './Pages/SingleBook';
 import Category from './Pages/Category';
-//import Category from './Pages/Category';
+
 
 
 
@@ -125,7 +125,6 @@ class App extends React.Component{
         />  
       </Route>
 
-  
       <Route exact path="/not-for-me">
         <Category
           activeUser = {this.state.activeUser}
