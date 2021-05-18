@@ -10,7 +10,7 @@ class Category extends React.Component{
 
     getBooksCategory = () => {
         const card = this.props.book.filter(book => {
-            if(book.category ==  this.props.category){
+            if(book.category ===  this.props.category){
                 return true;
             }
         })

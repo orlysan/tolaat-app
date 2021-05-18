@@ -10,7 +10,11 @@ class SingleBook extends React.Component{
     render(){
 console.log(this.props)
 console.log(this.props.match.params.id)
-        return <div></div> 
+        return (
+        <div>
+
+        </div> 
+        )
     }
 }
 

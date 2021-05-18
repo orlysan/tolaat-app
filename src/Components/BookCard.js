@@ -1,17 +1,17 @@
 import React from 'react';
-import { Modal , Button } from 'react-bootstrap';
+import SingleBook from '../Pages/SingleBook';
 import './BookCard.css'
 
 class BookCard extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            isModalOpen : false,
-        }
+        // this.state = {
+        //     // isModalOpen : false,
+        // }
     }
     //open and close modal function
-    openModal = () => {this.setState({isModalOpen :true})}
-    handleClose = () => {this.setState({isModalOpen :false})}
+    // openModal = () => {this.setState({isModalOpen :true})}
+    // handleClose = () => {this.setState({isModalOpen :false})}
 
 
     //chose book for user favorite list
@@ -27,9 +27,11 @@ class BookCard extends React.Component{
     
         return (
           
-            <div className="book-card" onClick={this.openModal}>
+            <div className="book-card">
                 <img src={book.img} alt={book.alt}></img>
-                <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
+                <SingleBook />
+               {/*  
+               <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
                     <Modal.Body>{book.review}
                     </Modal.Body>
                     <Modal.Footer>
@@ -41,6 +43,7 @@ class BookCard extends React.Component{
                     </Button>
                     </Modal.Footer>
                 </Modal>
+                */}
             </div>
 
         )

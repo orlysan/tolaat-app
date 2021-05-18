@@ -29,7 +29,7 @@ class Login extends React.Component{
     handleLogin = () => {
       
       const foundUser =  this.props.allUsers.find(user => {
-           return user.pwd == this.state.pwd && user.email == this.state.email;   
+           return user.pwd === this.state.pwd && user.email === this.state.email;   
         })
     
         if(foundUser){

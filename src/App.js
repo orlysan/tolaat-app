@@ -118,10 +118,10 @@ class App extends React.Component{
 
       <Route exact path="/reasonable">
         <Category
-         activeUser = {this.state.activeUser}
-         book = {this.state.allBooks}
-         title ="ספרים שיעבירו לכם בידוד בסביר"
-         category="reasonable"
+          activeUser = {this.state.activeUser}
+          book = {this.state.allBooks}
+          title ="ספרים שיעבירו לכם בידוד בסביר"
+          category="reasonable"
         />  
       </Route>
 
@@ -136,7 +136,8 @@ class App extends React.Component{
       </Route>
 
       <Route exact path="/books/:id">
-        <SingleBook allBooks={this.state.allBooks}/>
+        <SingleBook 
+          allBooks={this.state.allBooks}/>
       </Route>
 
       <Route exact path="/signup">
@@ -158,11 +159,6 @@ class App extends React.Component{
         />   
       </Route>
 
-{/* 
-      <Route>
-        <Category />
-      </Route>
-*/}
       </Container>
       </div>
      
