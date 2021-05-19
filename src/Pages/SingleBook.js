@@ -10,9 +10,9 @@ class SingleBook extends React.Component{
     }
 
     addToFavorite = (book) => {
-        console.log(book)
+        console.log(this.props.activeUser)
         this.props.favorite(book.id)
-        //window.location.href="/#/user"
+        //window.location.href="/#/user/:name"
     }
 
     goBack = () => {

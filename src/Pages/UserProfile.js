@@ -7,13 +7,18 @@ class UserProfile extends React.Component{
         super(props)
     }
 
-    render(){
-      //geting favorites user books list
+     //geting favorites user books list
+     getFavoriteBook = () => {
         const favoriteBooks = this.props.allBooks.filter(book =>{
             return this.props.activeUser.favorites.includes(book.id)
         });
+        return favoriteBooks
+      }    
 
-        console.log(favoriteBooks)
+    render(){
+     
+        const favoriteList = this.getFavoriteBook()
+        
        
         return(
             <div className="p-user-profile">
@@ -33,10 +38,10 @@ class UserProfile extends React.Component{
                     </Row>
                     
                 </Card>
-                <UserGallery favorite={favoriteBooks}/>
+                <UserGallery favorite={favoriteList}/>
             </div>
         )
     }
 }
 
-export default UserProfile;
+export default  UserProfile;

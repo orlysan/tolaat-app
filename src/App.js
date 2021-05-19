@@ -20,7 +20,6 @@ class App extends React.Component{
     this.state = {
       allUsers :  [],
       allBooks : [],
-      favoriteBooks:  [],
       //activeUser : null
       activeUser : {
         name: 'Orly',
@@ -28,7 +27,7 @@ class App extends React.Component{
         pwd: '123',
         aboutMe: 'my profile',
         img: '/testImage.jpeg',
-        favorites: [1, 10]
+        favorites: []
       }
     }
   }
@@ -79,14 +78,13 @@ class App extends React.Component{
     window.location.href="/#/user"
   }
 
-  //add favorite
-  addBook = (x) => {  
+  //add favorite book
+  addBook = (book) => {  
     this.setState({
-      activeUser : {...this.state.activeUser, favorites : this.state.activeUser.favorites.concat(x)}
-      
+      activeUser : 
+      {...this.state.activeUser, favorites : this.state.activeUser.favorites.concat(book)
+      }  
     })
-    console.log(x) 
-    //this.props.userBook(x)
 }  
 
   render(){
@@ -145,7 +143,8 @@ class App extends React.Component{
       </Route>
 
       <Route exact path="/books/:id">
-        <SingleBook 
+        <SingleBook
+          activeUser={this.state.activeUser} 
           allBooks={this.state.allBooks}
           favorite={this.addBook}/>
       </Route>
@@ -162,8 +161,7 @@ class App extends React.Component{
         login={this.login}/>   
       </Route>
 
-      <Route exact path="/user">
-        
+      <Route exact path="/user/">
         <UserProfile
           activeUser={this.state.activeUser}
           allBooks={this.state.allBooks}
