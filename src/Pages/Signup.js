@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form , Row , Col , Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Signup.css';
 class Signup extends React.Component{
     constructor(props){
@@ -121,14 +122,17 @@ class Signup extends React.Component{
   
 
                     <Form.Group as={Row} className="login-button">
-                        <Col sm={{ span: 10, offset: 2 }}>
+                        <Col>
                             <Button 
-                            type="button"
-                            onClick={this.handleAddUser}
-                            >הירשם</Button>
+                                type="button"
+                                onClick={this.handleAddUser}
+                                >הירשם
+                            </Button>
+                             <Link to="/">בחזרה לעמוד הבית</Link>
                         </Col>
                     </Form.Group>
                 </Form>
+               
             </div>
         )
     }

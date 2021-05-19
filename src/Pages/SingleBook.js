@@ -5,10 +5,7 @@ import './SingleBook.css'
 
 
 class SingleBook extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
+   
     addToFavorite = (book) => {
         console.log(this.props.activeUser)
         this.props.favorite(book.id)
@@ -22,7 +19,7 @@ class SingleBook extends React.Component{
         const bookList = this.props.allBooks;
         const bookId = this.props.match.params.id;
         const book = bookList.find(book => {
-            if(book.id == bookId){
+            if(book.id === bookId){
                 return true
             }
         })

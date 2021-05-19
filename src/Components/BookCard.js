@@ -1,14 +1,13 @@
 import React from 'react';
-import { Card, Col, Row, } from 'react-bootstrap';
+import { Col, Row, } from 'react-bootstrap';
 import './BookCard.css'
 
 class BookCard extends React.Component{
-    constructor(props){
-        super(props);
+    
         // this.state = {
         //     // isModalOpen : false,
         // }
-    }
+    
     //open and close modal function
     // openModal = () => {this.setState({isModalOpen :true})}
     // handleClose = () => {this.setState({isModalOpen :false})}
@@ -24,11 +23,11 @@ class BookCard extends React.Component{
     render(){
 
      //map book list  
-     const book =  this.props.getBook.map(book => {
+     const book =  this.props.getBook.map((book, index) => {
     
         return (
-            <Col xs={1} md={2} lg={4} className="book-card">
-                <img src={book.img} alt={book.alt} id={book.id}
+            <Col xs={1} md={2} lg={4} className="book-card" key={index}>
+                <img src={book.img} alt={book.alt} id={book.id} 
                     onClick={this.goToSingleBook} 
                     >
                 </img>       

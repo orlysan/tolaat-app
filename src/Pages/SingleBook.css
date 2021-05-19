@@ -3,8 +3,9 @@
     flex-direction: column;
     margin:auto;
     width: 40rem;
-    height: 30rem;
+    height: 35rem;
     background-color: #e8cfc8;
+    border-radius: 5%;
 }
 
 .book-review{

@@ -2,10 +2,7 @@ import React from 'react';
 import './BooksCategories.css'
 
 class BooksCategories extends React.Component{
-    constructor(props){
-        super(props)
-    }
-
+   
     
     clickCtegory = () => {
       console.log(this.props.goto)

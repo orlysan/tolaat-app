@@ -3,10 +3,7 @@ import BookCard from '../Components/BookCard';
 import CategoryHeader from '../Components/CategoryHeader';
 
 class Category extends React.Component{
-    constructor(props){
-        super(props)
-    }
-
+  
     getBooksCategory = () => {
         const card = this.props.book.filter(book => {
             if(book.category ===  this.props.category){

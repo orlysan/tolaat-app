@@ -5,10 +5,7 @@ import './HomePage.css';
 
 
 class HomePage extends React.Component{
-    constructor(props){
-        super(props)
-    }
-
+  
     render(){
         return(
             <Container className="p-home">
@@ -54,9 +51,9 @@ class HomePage extends React.Component{
                 <div className="summary"> 
                     <p>האתר עדיין בהרצה וגם יש לי חיים לתחזק. מבטיחה להעלות פה כל ספר חדש שאקרא</p>
                     <p>מוזמנים להגיב ולכתוב לי</p>
-                    <a href="mailto:michal_mor_1@yahoo.com" target="_blank">michal_mor_1@yahoo.com</a >
+                    <a href="mailto:michal_mor_1@yahoo.com" target="_blank" rel="noreferrer nofollow">michal_mor_1@yahoo.com</a >
                     <h3>תהנו!</h3>
-                    <span class="material-icons"><a href="fb://tolaatsfarim.michal" target="_blank"></a>facebook</span>
+                    <span class="material-icons"><a href="fb://tolaatsfarim.michal" target="_blank" rel="noreferrer nofollow"></a>facebook</span>
                 </div>
                 
             </Container>

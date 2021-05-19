@@ -25,7 +25,7 @@ class UserProfile extends React.Component{
                 <Card className="profile-card">
                     <Row>
                         <Col sm={4}>
-                            <Card.Img className="card-img" variant="right" src={this.props.activeUser.img} roundedCircle />
+                            <Card.Img className="card-img" variant="right" src={this.props.activeUser.img} />
                         </Col>
                         <Col sm={8}>
                             <Card.Body>

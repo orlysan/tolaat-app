@@ -8,7 +8,8 @@ class Login extends React.Component{
         super(props)
         this.state = {
             email : '',
-            pwd : ''
+            pwd : '',
+            isValid : false
         }
     }
 
@@ -31,17 +32,27 @@ class Login extends React.Component{
       const foundUser =  this.props.allUsers.find(user => {
            return user.pwd === this.state.pwd && user.email === this.state.email;   
         })
-    
+        
+
         if(foundUser){
             this.props.login(foundUser);
+            this.setState({isValid : true})
             window.location.href = "/#/user"
         } else {
-            alert('error')
+            this.setState({isValid : false})
         }
+
+        const text = "";
+        this.state.isValid === false ?  text = "אימייל או סיסמא שגויים" : text = "";
+           
     }
+
+   
   
 
     render(){
+        
+        console.log(this.props.allUsers)
         return(
             <div className="p-login">
                 <h1 className="login-title">התחברות</h1>
@@ -71,8 +82,7 @@ class Login extends React.Component{
                             />
                         </Col>
                     </Form.Group>
-  
-
+                    <span>{this.text}</span>
                     <Form.Group as={Row} className="login-button">
                         <Col sm={{ span: 2, offset: 10 }}>
                             <Button 
@@ -84,6 +94,7 @@ class Login extends React.Component{
                 </Form>
 
                 <Link  to="/signup" className="signup-from-login">הרשמה</Link>
+                <Link to="/">בחזרה לעמוד הבית</Link>
             </div>
         )
     }

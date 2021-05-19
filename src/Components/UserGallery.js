@@ -3,11 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import './UserGallery.css'
 
 class UserGallery extends React.Component{
-    constructor(props){
-        super(props)
-       
-    }
-    
+   
 
     render(){
         const book = this.props.favorite.map(book => {
