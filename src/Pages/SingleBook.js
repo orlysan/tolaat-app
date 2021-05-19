@@ -33,7 +33,7 @@ class SingleBook extends React.Component{
            
         <div className="p-singleBook">
             <div className="book-review">
-                {book.review}
+                {book.review.split("\n").map(str => <p>{str}</p>)}
             </div>
             <div className="buttons-section">
                 <Button type="button" onClick={() => this.addToFavorite(book)}>הוסף למועדפים שלי</Button>
