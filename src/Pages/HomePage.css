@@ -44,3 +44,7 @@
 .summary a {
     text-decoration: none;
 }
+
+.face-buttons {
+    margin: 3rem;
+}

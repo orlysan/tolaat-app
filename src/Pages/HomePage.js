@@ -28,7 +28,7 @@ class HomePage extends React.Component{
                     <p>אם עדיין לא קראתם אותם אז בחייאת, זה הזמן להתחיל, ואחר כך נתקדם.</p>
                     <p>אוקיי?</p>
                 </div>
-
+               
                 <div className="books-categories">
                     <BooksCategories 
                         category= "כמו שאומרים בגן: זה לא לטעמי"
@@ -53,9 +53,12 @@ class HomePage extends React.Component{
                     <p>מוזמנים להגיב ולכתוב לי</p>
                     <a href="mailto:michal_mor_1@yahoo.com" target="_blank" rel="noreferrer nofollow">michal_mor_1@yahoo.com</a >
                     <h3>תהנו!</h3>
-                    <span class="material-icons"><a href="fb://tolaatsfarim.michal" target="_blank" rel="noreferrer nofollow"></a>facebook</span>
+                    <div > אהבתם! שתפו
+                        <div class="fb-like face-buttons" data-href="https://www.facebook.com/tolaatsfarim.michal" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+                    </div>
+                    
                 </div>
-                
+               
             </Container>
            
         )
