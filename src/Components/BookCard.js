@@ -15,10 +15,7 @@ class BookCard extends React.Component{
 
 
     //chose book for user favorite list
-    addBook = (x) => {  
-        console.log(x) 
-        //this.props.userBook(x)
-    }  
+   
     
     goToSingleBook = (e) =>{
         window.location.href="/#/books/"+e.target.id
@@ -33,7 +30,6 @@ class BookCard extends React.Component{
             <Col xs={1} md={2} lg={4} className="book-card">
                 <img src={book.img} alt={book.alt} id={book.id}
                     onClick={this.goToSingleBook} 
-                    favorite={this.addBook}
                     >
                 </img>       
             </Col>

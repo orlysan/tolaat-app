@@ -8,9 +8,9 @@ class UserProfile extends React.Component{
     }
 
     render(){
-      
-        const favoriteBooks = this.props.activeUser.favorites.map(book =>{
-            return book
+      //geting favorites user books list
+        const favoriteBooks = this.props.allBooks.filter(book =>{
+            return this.props.activeUser.favorites.includes(book.id)
         });
 
         console.log(favoriteBooks)
