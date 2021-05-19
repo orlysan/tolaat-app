@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, } from 'react-bootstrap';
 import './BookCard.css'
 
 class BookCard extends React.Component{
@@ -15,9 +15,9 @@ class BookCard extends React.Component{
 
 
     //chose book for user favorite list
-    addBook = (id) => { 
-        
-        this.props.userBook(id)
+    addBook = (x) => {  
+        console.log(x) 
+        //this.props.userBook(x)
     }  
     
     goToSingleBook = (e) =>{
@@ -30,19 +30,21 @@ class BookCard extends React.Component{
      const book =  this.props.getBook.map(book => {
     
         return (
-           <img src={book.img} alt={book.alt} onClick={this.goToSingleBook} id={book.id}></img>       
-        )
+            <Col xs={1} md={2} lg={4} className="book-card">
+                <img src={book.img} alt={book.alt} id={book.id}
+                    onClick={this.goToSingleBook} 
+                    favorite={this.addBook}
+                    >
+                </img>       
+            </Col>
+         )
         
-     })
-    
+     })   
         return (
-            <Row>
-                <Col xs={6} md={4} lg={2} className="book-card">
-                    {book}
-                </Col>
-            </Row>
-        )
-     
+           <Row>
+                {book}
+           </Row>                   
+        )   
     }
 }
 

@@ -20,14 +20,15 @@ class App extends React.Component{
     this.state = {
       allUsers :  [],
       allBooks : [],
-      bestBooks:  [],
+      favoriteBooks:  [],
       //activeUser : null
       activeUser : {
         name: 'Orly',
         email: 'orlysan1@gmail.com',
         pwd: '123',
         aboutMe: 'my profile',
-        img: '/testImage.jpeg'
+        img: '/testImage.jpeg',
+        favorites: [1, 10]
       }
     }
   }
@@ -155,6 +156,7 @@ class App extends React.Component{
         
         <UserProfile
           activeUser={this.state.activeUser}
+          favoriteBook={this.state.favoriteBook}
         />   
       </Route>
 

@@ -3,13 +3,15 @@
         "id": 1,
         "name": "orly",
         "email": "orlysan1@gmail.com",
-        "pwd": 123
+        "pwd": 123,
+        "favorites": [1]
     } ,
 
     {
         "id": 2,
         "name": "test",
         "email": "test@gmail.com",
-        "pwd": 456
+        "pwd": 456,
+        "favorites": []
     }
 ]

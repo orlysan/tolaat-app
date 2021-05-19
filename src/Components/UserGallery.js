@@ -7,8 +7,12 @@ class UserGallery extends React.Component{
         super(props)
        
     }
+    
 
     render(){
+
+        const favoriteBook = this.props.favorite
+       //console.log(favoriteBook)
         return(
           <Container>
               <h1>ספרים שאהבתי:</h1>

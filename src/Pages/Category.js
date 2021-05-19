@@ -31,7 +31,7 @@ class Category extends React.Component{
         return(
             <div className="p-forever">
                 <CategoryHeader categoryTitle={this.props.title}/>
-                
+               
                         <BookCard 
                             getBook = {getBook}
                             userBook = {this.userBook}

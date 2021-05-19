@@ -11,6 +11,8 @@ class SingleBook extends React.Component{
 
     addToFavorite = (book) => {
         console.log(book)
+        //this.props.favorite(book.id)
+        //window.location.href="/#/user"
     }
 
     goBack = () => {
@@ -24,13 +26,14 @@ class SingleBook extends React.Component{
                 return true
             }
         })
-
+        
          
     
         return (
-   
+           
         <div className="p-singleBook">
             <div className="book-review">
+                {book.review}
             </div>
             <div className="buttons-section">
                 <Button type="button" onClick={() => this.addToFavorite(book)}>הוסף למועדפים שלי</Button>

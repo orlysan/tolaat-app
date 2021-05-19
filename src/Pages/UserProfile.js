@@ -8,7 +8,13 @@ class UserProfile extends React.Component{
     }
 
     render(){
-        console.log(this.props.activeUser)
+      
+        const favoriteBooks = this.props.activeUser.favorites.map(book =>{
+            return book
+        });
+
+        console.log(favoriteBooks)
+       
         return(
             <div className="p-user-profile">
                 <Card className="profile-card">
@@ -27,7 +33,7 @@ class UserProfile extends React.Component{
                     </Row>
                     
                 </Card>
-                <UserGallery />
+                <UserGallery favorite={favoriteBooks}/>
             </div>
         )
     }
