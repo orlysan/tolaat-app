@@ -10,6 +10,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import SingleBook from './Pages/SingleBook';
 import Category from './Pages/Category';
+import Classic from './Pages/Classic';
 
 
 
@@ -18,7 +19,7 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      allUsers :  [],
+      allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : [],
       allBooks : [],
       //activeUser : null
       activeUser : {
@@ -72,6 +73,7 @@ class App extends React.Component{
 
   //signup
   addUser = (newUser) =>{
+    localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(newUser))
     this.setState({
       allUsers : this.state.allUsers.concat(newUser),
       activeUser : newUser
@@ -93,7 +95,7 @@ class App extends React.Component{
   return (
     <HashRouter>
       <div className="p-app">
-        <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me",   "/user"]}> 
+        <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me",   "/user" , "/classic"]}> 
           <TolaatNavbar
               allUsers={this.state.allUsers}
               activeUser = {this.state.activeUser}
@@ -168,6 +170,10 @@ class App extends React.Component{
           activeUser={this.state.activeUser}
           allBooks={this.state.allBooks}
         />   
+      </Route>
+
+      <Route exact path="/classic">
+          <Classic />
       </Route>
 
       </Container>

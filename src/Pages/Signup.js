@@ -12,7 +12,8 @@ class Signup extends React.Component{
                 pwd: '',
                 pswConformation : '',
                 aboutMe: '',
-                img: ''
+                img: '',
+                favorites: []
             },
             error: ''
            
@@ -22,7 +23,7 @@ class Signup extends React.Component{
  
     handleAddUser = () => {
         
-        //this.props.addUser(this.state.newUser)
+        this.props.addUser(this.state.newUser)
     }
 
     handleChange = (e) => {
