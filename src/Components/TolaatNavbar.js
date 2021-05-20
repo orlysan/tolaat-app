@@ -6,7 +6,8 @@ class TolaatNavbar extends React.Component{
    constructor(props){
     super(props)
     this.state = {
-        searchFriend : ''
+        searchFriend : '',
+        friendResult : []
     }
    }
     goToUser = () => {
@@ -14,14 +15,25 @@ class TolaatNavbar extends React.Component{
     }
     
     filterFriends = (e) => {
-        this.setState({searchFriend : e.target.value})
-        let searchFriend = this.props.allUsers.filter(user => {
-            return user.name == this.state.searchFriend
-        });
-            console.log(searchFriend)
-            console.log(this.state.searchFriend)
+        this.setState({
+            searchFriend : e.target.value, 
+            friendResult : this.props.allUsers.filter(user => {
+                return user.name.toLowerCase().includes( e.target.value.toLowerCase())  
+            })
+        })
+
+        this.handleOption =() => {
+            window.location.href="/user"
+        }
+        // let friend = this.props.allUsers.filter(user => {
+        //     if(user.name == e.target.value){
+        //         return user.name;
+        //     }
+        // });
+        //    this.setState({friendResult : friend})
             //return  <option>{user.name}</option>
     }
+    
 
     render(){
         
@@ -52,7 +64,7 @@ class TolaatNavbar extends React.Component{
                     
                         {searchEl}
                         <datalist id="brow">
-                             
+                             {this.state.friendResult.map(opt => <option onClick={this.handleOption}>{opt.name}</option>)}
                         </datalist>
                         
                        

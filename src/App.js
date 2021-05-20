@@ -21,7 +21,7 @@ class App extends React.Component{
     this.state = {
       allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : [],
       allBooks : [],
-      //activeUser : null
+      //activeUser : localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null,
       activeUser : {
         name: 'Orly',
         email: 'orlysan1@gmail.com',
@@ -56,6 +56,7 @@ class App extends React.Component{
 
 //login
   login = (userObj) => {
+    //localStorage.activeUser = JSON.stringify(this.state.activeUser)
     this.setState({
       activeUser : userObj
     })
@@ -82,7 +83,7 @@ class App extends React.Component{
   }
 
   //add favorite book
-  addBook = (book) => {  
+  addBook = (book) => { 
     this.setState({
       activeUser : 
       {...this.state.activeUser, favorites : this.state.activeUser.favorites.concat(book)

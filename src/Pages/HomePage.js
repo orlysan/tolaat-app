@@ -1,15 +1,35 @@
 import React from 'react';
-import { Container, Jumbotron } from 'react-bootstrap';
+import { Container, Dropdown, Jumbotron } from 'react-bootstrap';
 import BooksCategories from '../Components/BooksCategories';
 import './HomePage.css';
 
 
 class HomePage extends React.Component{
-  
+  constructor(props){
+      super(props)
+      this.state = {
+          newReview : [
+              {date : "17.3.21", id: 50},
+              {date : "15.3.21", id: 51},
+              {date : "13.3.21", id: 52},
+          ]
+      }
+  }
     render(){
+        //map and add new reviews
+        const reviewEl = this.state.newReview.map(item => {
+            return  <Dropdown.Item href="#/books/10"> {item.date}</Dropdown.Item>
+        })
+        console.log(reviewEl)
         return(
             <Container className="p-home">
                 <Jumbotron className="home-jumbo">
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic"> 
+                            ביקורות אחרונות
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>{reviewEl}</Dropdown.Menu>
+                    </Dropdown>
                     <h1>תולעת ספרים</h1>
                     <h3>המלצות וביקורות ספרים למתקדמים</h3>
                 </Jumbotron>
