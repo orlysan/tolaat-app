@@ -9,7 +9,7 @@ class Login extends React.Component{
         this.state = {
             email : '',
             pwd : '',
-            isValid : false
+            error : ""
         }
     }
 
@@ -36,15 +36,10 @@ class Login extends React.Component{
 
         if(foundUser){
             this.props.login(foundUser);
-            this.setState({isValid : true})
             window.location.href = "/#/user"
         } else {
-            this.setState({isValid : false})
-        }
-
-        const text = "";
-        this.state.isValid === false ?  text = "אימייל או סיסמא שגויים" : text = "";
-           
+            this.setState({error : "אימייל או סיסמא שגויים"})
+     }      
     }
 
    
@@ -82,7 +77,7 @@ class Login extends React.Component{
                             />
                         </Col>
                     </Form.Group>
-                    <span>{this.text}</span>
+                    <span className="error-login">{this.state.error}</span>
                     <Form.Group as={Row} className="login-button">
                         <Col sm={{ span: 2, offset: 10 }}>
                             <Button 

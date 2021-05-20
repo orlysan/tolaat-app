@@ -26,3 +26,8 @@
 .signup-from-login{
     float:left;
 }
+
+.error-login {
+    color: red;
+    margin-right: 10rem;
+}
