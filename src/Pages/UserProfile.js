@@ -24,7 +24,7 @@ class UserProfile extends React.Component{
      
         const favoriteList = this.getFavoriteBook()
         
-       
+       console.log(this.props.activeUser)
         return(
             <div className="p-user-profile">
                 <Card className="profile-card">

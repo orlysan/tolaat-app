@@ -19,32 +19,10 @@ class Signup extends React.Component{
         }
     }
 
-    updateName = (e) => {
-        this.setState(Object.assign(this.state.newUser,{ name: e.target.value}))
-    }
-
-    updateEmail = (e) => {
-        this.setState(Object.assign(this.state.newUser,{ email: e.target.value}))
-    }
-
-    confirmPwd = (e) => {
-        this.setState(Object.assign(this.state.newUser,{ pswConformation: e.target.value}))
-    }
-
-    updatePwd = (e) => {
-        this.setState(Object.assign(this.state.newUser,{ pwd: e.target.value}))
-    }
-
-    updateAboutme = (e) => {
-        this.setState(Object.assign(this.state.newUser,{ aboutMe: e.target.value}))
-    }
-
-    updateImage = (e) => {
-        this.setState(Object.assign(this.state.newUser,{ img: e.target.value}))
-    }
-
+ 
     handleAddUser = () => {
-        this.props.addUser(this.state.newUser)
+        
+        //this.props.addUser(this.state.newUser)
     }
 
     handleChange = (e) => {
@@ -53,18 +31,13 @@ class Signup extends React.Component{
         })) 
     }
 
-    handleSubmit = (e) => {
-        console.log("form submitted");
-        e.preventDefault()
-
-    }
 
     render(){
         
         return(
             <div className='p-signup'>
                
-                <Form className="signup-form" onSubmit={this.handleSubmit}>
+                <Form className="signup-form">
                 <h1>הירשם</h1>
                     <Form.Group className="login-form-group" as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={2}>
@@ -119,7 +92,7 @@ class Signup extends React.Component{
                         <Col sm={10}>
                             <Form.Control 
                             type="password" 
-                            name="confirmPwd"
+                            name="pswConformation"
                             placeholder="אימות סיסמא"
                             onChange={this.handleChange}
                             value={this.state.pswConformation}
@@ -140,7 +113,7 @@ class Signup extends React.Component{
                         <Form.File
                             className="position-relative mt-3"
                             required
-                            name="file"
+                            name="img"
                             label="העלאת תמונה"
                             id="validationFormik107"
                             feedbackTooltip

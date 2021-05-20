@@ -66,7 +66,7 @@ class App extends React.Component{
     this.setState({
       activeUser : null
     })
-    
+
   }
 
 
@@ -95,6 +95,7 @@ class App extends React.Component{
       <div className="p-app">
         <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me",   "/user"]}> 
           <TolaatNavbar
+              allUsers={this.state.allUsers}
               activeUser = {this.state.activeUser}
               logout = {this.logout}
             />

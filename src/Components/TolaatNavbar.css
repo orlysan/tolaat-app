@@ -5,3 +5,7 @@
     background-color: whitesmoke;
     padding:0.5rem;
 }
+.tolaat-dropdown {
+    z-index: 1;
+    width: 15rem;
+}
