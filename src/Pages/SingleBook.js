@@ -9,7 +9,7 @@ class SingleBook extends React.Component{
     addToFavorite = (book) => {
         console.log(this.props.activeUser)
         this.props.favorite(book.id)
-        //window.location.href="/#/user/:name"
+        window.location.href="/#/user"
     }
 
     goBack = () => {
@@ -19,7 +19,7 @@ class SingleBook extends React.Component{
         const bookList = this.props.allBooks;
         const bookId = this.props.match.params.id;
         const book = bookList.find(book => {
-            if(book.id === bookId){
+            if(book.id == bookId){
                 return true
             }
         })

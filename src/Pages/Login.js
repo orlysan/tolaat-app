@@ -33,7 +33,7 @@ class Login extends React.Component{
            return user.pwd === this.state.pwd && user.email === this.state.email;   
         })
         
-
+console.log(foundUser)
         if(foundUser){
             this.props.login(foundUser);
             window.location.href = "/#/user"

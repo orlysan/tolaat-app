@@ -10,9 +10,11 @@ class Signup extends React.Component{
                 name: '',
                 email: '',
                 pwd: '',
+                pswConformation : '',
                 aboutMe: '',
                 img: ''
-            }
+            },
+            error: ''
            
         }
     }
@@ -23,6 +25,10 @@ class Signup extends React.Component{
 
     updateEmail = (e) => {
         this.setState(Object.assign(this.state.newUser,{ email: e.target.value}))
+    }
+
+    confirmPwd = (e) => {
+        this.setState(Object.assign(this.state.newUser,{ pswConformation: e.target.value}))
     }
 
     updatePwd = (e) => {
@@ -41,12 +47,24 @@ class Signup extends React.Component{
         this.props.addUser(this.state.newUser)
     }
 
+    handleChange = (e) => {
+        this.setState(Object.assign(this.state.newUser, {
+            [e.target.name] : e.target.value
+        })) 
+    }
+
+    handleSubmit = (e) => {
+        console.log("form submitted");
+        e.preventDefault()
+
+    }
+
     render(){
         
         return(
             <div className='p-signup'>
                
-                <Form className="signup-form">
+                <Form className="signup-form" onSubmit={this.handleSubmit}>
                 <h1>הירשם</h1>
                     <Form.Group className="login-form-group" as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={2}>
@@ -54,8 +72,10 @@ class Signup extends React.Component{
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
-                                type="text" placeholder="שם" 
-                                onChange={this.updateName}
+                                type="text"
+                                name="name" 
+                                placeholder="שם" 
+                                onChange={this.handleChange}
                                 value={this.state.name}
                             />
                         </Col>
@@ -67,8 +87,10 @@ class Signup extends React.Component{
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
-                                type="email" placeholder="אימייל" 
-                                onChange={this.updateEmail}
+                                type="email" 
+                                name="email"
+                                placeholder="אימייל" 
+                                onChange={this.handleChange}
                                 value={this.state.email}
                             />
                         </Col>
@@ -81,8 +103,10 @@ class Signup extends React.Component{
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
-                            type="password" placeholder="סיסמא"
-                            onChange={this.updatePwd}
+                            type="password" 
+                            name="pwd"
+                            placeholder="סיסמא"
+                            onChange={this.handleChange}
                             value={this.state.pwd}
                             />
                         </Col>
@@ -94,7 +118,11 @@ class Signup extends React.Component{
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
-                            type="password" placeholder="אימות סיסמא"
+                            type="password" 
+                            name="confirmPwd"
+                            placeholder="אימות סיסמא"
+                            onChange={this.handleChange}
+                            value={this.state.pswConformation}
                             />
                         </Col>
                     </Form.Group>
@@ -102,7 +130,8 @@ class Signup extends React.Component{
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Label>קצת על עצמי</Form.Label>
                         <Form.Control as="textarea" rows={3} 
-                            onChange= {this.updateAboutme}
+                            name="aboutMe"
+                            onChange= {this.handleChange}
                             value={this.state.aboutMe}
                         />
                     </Form.Group>
@@ -115,7 +144,7 @@ class Signup extends React.Component{
                             label="העלאת תמונה"
                             id="validationFormik107"
                             feedbackTooltip
-                            onChange={this.updateImage}
+                            onChange={this.handleChange}
                             value={this.state.img}
                          />
                     </Form.Group>

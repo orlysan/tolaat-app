@@ -66,6 +66,7 @@ class App extends React.Component{
     this.setState({
       activeUser : null
     })
+    
   }
 
 
@@ -161,7 +162,7 @@ class App extends React.Component{
         login={this.login}/>   
       </Route>
 
-      <Route exact path="/user/">
+      <Route exact path="/user">
         <UserProfile
           activeUser={this.state.activeUser}
           allBooks={this.state.allBooks}

@@ -16,8 +16,8 @@ class BookCard extends React.Component{
     //chose book for user favorite list
    
     
-    goToSingleBook = (e) =>{
-        window.location.href="/#/books/"+e.target.id
+    goToSingleBook = (id) =>{
+        window.location.href="/#/books/"+id
     }
 
     render(){
@@ -27,8 +27,8 @@ class BookCard extends React.Component{
     
         return (
             <Col xs={1} md={2} lg={4} className="book-card" key={index}>
-                <img src={book.img} alt={book.alt} id={book.id} 
-                    onClick={this.goToSingleBook} 
+                <img src={book.img} alt={book.alt}  
+                    onClick={() => this.goToSingleBook(book.id)} 
                     >
                 </img>       
             </Col>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Row ,Col } from 'react-bootstrap';
+import { Redirect } from 'react-router';
 import UserGallery from '../Components/UserGallery';
 
 class UserProfile extends React.Component{
@@ -16,6 +17,10 @@ class UserProfile extends React.Component{
       }    
 
     render(){
+
+        if( !this.props.activeUser) {
+            return <Redirect to="/login" />
+        }
      
         const favoriteList = this.getFavoriteBook()
         
