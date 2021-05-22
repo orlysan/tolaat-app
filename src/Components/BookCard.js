@@ -4,13 +4,6 @@ import './BookCard.css'
 
 class BookCard extends React.Component{
     
-        // this.state = {
-        //     // isModalOpen : false,
-        // }
-    
-    //open and close modal function
-    // openModal = () => {this.setState({isModalOpen :true})}
-    // handleClose = () => {this.setState({isModalOpen :false})}
 
 
     //chose book for user favorite list

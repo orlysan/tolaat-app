@@ -3,15 +3,17 @@
         "id": 1,
         "name": "orly",
         "email": "orlysan1@gmail.com",
-        "pwd": "123",
-        "favorites": []
+        "pwd": "123456",
+        "favorites": [{
+            "id": "1", "review": "זה גם הספר האהוב עלי!"
+        }]
     } ,
 
     {
         "id": 2,
         "name": "test",
         "email": "test@gmail.com",
-        "pwd": "456",
+        "pwd": "123456",
         "favorites": []
     }
 ]

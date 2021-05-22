@@ -28,7 +28,8 @@ class App extends React.Component{
       //   pwd: '123',
       //   aboutMe: 'my profile',
       //   img: '/testImage.jpeg',
-      //   favorites: []
+      //   favorites: [{,}],
+      
       // }
     }
   }
@@ -88,10 +89,10 @@ class App extends React.Component{
 
   //add favorite book and storge in localStorage and in activeUsers.favoriets state
   addBook = (book) => { 
-   localStorage.activeUser.favorites = JSON.stringify(this.state.activeUser.favorites.concat(book))
+   //localStorage.activeUser.favorites = JSON.stringify(this.state.activeUser.favorites.concat(book))
     this.setState({
       activeUser : 
-      {...this.state.activeUser, favorites : this.state.activeUser.favorites.concat(book)
+      {...this.state.activeUser, favorites  : this.state.activeUser.favorites.concat(book)
       }  
     })
 }  

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Dropdown, Jumbotron } from 'react-bootstrap';
+import { withRouter } from 'react-router';
 import BooksCategories from '../Components/BooksCategories';
 import './HomePage.css';
 
@@ -18,9 +19,9 @@ class HomePage extends React.Component{
     render(){
         //map and add new reviews
         const reviewEl = this.state.newReview.map(item => {
-            return  <Dropdown.Item href="#/books/10"> {item.date}</Dropdown.Item>
+            return  <Dropdown.Item href="#/books/10" > {item.date}</Dropdown.Item>
         })
-        console.log(reviewEl)
+        console.log(this.props.match)
         return(
             <Container className="p-home">
                 <Jumbotron className="home-jumbo">
@@ -86,4 +87,4 @@ class HomePage extends React.Component{
     }
 }
 
-export default HomePage;
+export default withRouter (HomePage);

@@ -36,7 +36,9 @@ class Login extends React.Component{
 console.log(foundUser)
         if(foundUser){
             this.props.login(foundUser);
-            window.location.href = "/#/user"
+            window.location.href = "/#/user";
+            this.setState({error:''})
+
         } else {
             this.setState({error : "אימייל או סיסמא שגויים"})
      }      
@@ -78,7 +80,7 @@ console.log(foundUser)
                         </Col>
                     </Form.Group>
                     <span className="error-login">{this.state.error}</span>
-                    <Form.Group as={Row} className="login-button">
+                    <Form.Group as={Row} className="login-button text-center">
                         <Col sm={{ span: 2, offset: 10 }}>
                             <Button 
                             type="button"
