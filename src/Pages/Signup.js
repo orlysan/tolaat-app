@@ -2,10 +2,13 @@ import React from 'react';
 import { Form , Row , Col , Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Signup.css';
+
+
+
 class Signup extends React.Component{
     constructor(props){
         super(props)
-        this.state={
+        this.state= {
             newUser : {
                 name: '',
                 email: '',
@@ -15,37 +18,71 @@ class Signup extends React.Component{
                 img: '',
                 favorites: []
             },
-            error: ''
-           
+            nameError:'',
+            emailError: '',
+            pwdError:'',
+            confirmPwdError:'',
         }
     }
-
- 
-    handleAddUser = () => {
-        
-        this.props.addUser(this.state.newUser)
-    }
-
+    
     handleChange = (e) => {
         this.setState(Object.assign(this.state.newUser, {
             [e.target.name] : e.target.value
         })) 
     }
 
+    validate = () => {
+        let nameError = "";
+        let emailError = "";
+        let pwdError = "";
+        let confiemPwd = "";
 
+        if(! this.state.newUser.name){
+            nameError ="נא למלא שם"
+        }
+        if(! this.state.newUser.email.includes('@')){
+            emailError="מייל לא תקין"
+        }
+        if(this.state.newUser.pwd.length < 6){
+            pwdError="סיסמא צריכה להיות בעלת שישה תווים לפחות"
+        }
+        if(this.state.newUser.pswConformation !== this.state.newUser.pwd){
+            confiemPwd = "סיסמא אינה זהה"
+        }
+
+        if(emailError || nameError || pwdError || confiemPwd){
+            this.setState({emailError , nameError, pwdError, confiemPwd})
+            return false
+        }
+        return true
+    }
+
+    handleAddUser = (e) => {
+        e.preventDefault();
+        const isValid = this.validate();
+        if(isValid) {
+            this.props.addUser(this.state.newUser);
+            this.state.emailError = "";
+            this.state.nameError = "";
+            this.state.pwdError ="";
+            this.state.confiemPwd="";
+        }
+    }
+      
     render(){
-        
         return(
             <div className='p-signup'>
                
-                <Form className="signup-form">
+                <Form className="signup-form" noValidate>
                 <h1>הירשם</h1>
-                    <Form.Group className="login-form-group" as={Row} controlId="formHorizontalEmail">
+                    <Form.Group className="login-form-group" as={Row} controlId="formHorizontal">
                         <Form.Label column sm={2}>
                             שם
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
+                                required
+                                noValidate
                                 type="text"
                                 name="name" 
                                 placeholder="שם" 
@@ -53,14 +90,18 @@ class Signup extends React.Component{
                                 value={this.state.name}
                             />
                         </Col>
+                        <div className="error-signup">{this.state.nameError}</div>
                     </Form.Group>
+                   
 
                     <Form.Group className="login-form-group" as={Row} controlId="formHorizontalEmail">
                         <Form.Label column sm={2}>
                             מייל
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control 
+                            <Form.Control
+                                required
+                                noValidate
                                 type="email" 
                                 name="email"
                                 placeholder="אימייל" 
@@ -68,6 +109,7 @@ class Signup extends React.Component{
                                 value={this.state.email}
                             />
                         </Col>
+                         <div className="error-signup">{this.state.emailError}</div>
                     </Form.Group>
 
 
@@ -77,13 +119,15 @@ class Signup extends React.Component{
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control 
-                            type="password" 
+                            type="password"
+                            noValidate 
                             name="pwd"
                             placeholder="סיסמא"
                             onChange={this.handleChange}
                             value={this.state.pwd}
                             />
                         </Col>
+                        <div className="error-signup">{this.state.pwdError}</div>
                     </Form.Group>
 
                     <Form.Group as={Row} controlId="formHorizontalPassword" className="mt-3">
@@ -93,12 +137,14 @@ class Signup extends React.Component{
                         <Col sm={10}>
                             <Form.Control 
                             type="password" 
+                            noValidate
                             name="pswConformation"
                             placeholder="אימות סיסמא"
                             onChange={this.handleChange}
                             value={this.state.pswConformation}
                             />
                         </Col>
+                        <div className="error-signup">{this.state.confiemPwd}</div>
                     </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlTextarea1">
@@ -113,7 +159,6 @@ class Signup extends React.Component{
                     <Form.Group>
                         <Form.File
                             className="position-relative mt-3"
-                            required
                             name="img"
                             label="העלאת תמונה"
                             id="validationFormik107"
@@ -124,14 +169,15 @@ class Signup extends React.Component{
                     </Form.Group>
   
 
-                    <Form.Group as={Row} className="login-button">
+                    <Form.Group as={Row} className="login-button" className="text-center">
                         <Col>
-                            <Button 
+                            <Button
+                                className="m-3"
                                 type="button"
                                 onClick={this.handleAddUser}
                                 >הירשם
                             </Button>
-                             <Link to="/">בחזרה לעמוד הבית</Link>
+                             <Link className="m-3" to="/">בחזרה לעמוד הבית</Link>
                         </Col>
                     </Form.Group>
                 </Form>

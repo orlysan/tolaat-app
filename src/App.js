@@ -20,16 +20,16 @@ class App extends React.Component{
     super(props)
     this.state = {
       allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : [],
-      allBooks : [],
-      //activeUser : localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null,
-      activeUser : {
-        name: 'Orly',
-        email: 'orlysan1@gmail.com',
-        pwd: '123',
-        aboutMe: 'my profile',
-        img: '/testImage.jpeg',
-        favorites: []
-      }
+      allBooks : localStorage.allBooks ? JSON.parse(localStorage.allBooks) : [],
+      activeUser : localStorage.activeUser ? JSON.parse(localStorage.activeUser) :  null,
+      // activeUser : {
+      //   name: 'Orly',
+      //   email: 'orlysan1@gmail.com',
+      //   pwd: '123',
+      //   aboutMe: 'my profile',
+      //   img: '/testImage.jpeg',
+      //   favorites: []
+      // }
     }
   }
 
@@ -54,9 +54,13 @@ class App extends React.Component{
     })
   }
 
+  componentDidUpdate(nextProps, nextState){
+    localStorage.setItem('allBooks', JSON.stringify(nextState.allBooks))
+  }
+
 //login
   login = (userObj) => {
-    //localStorage.activeUser = JSON.stringify(this.state.activeUser)
+    localStorage.activeUser = JSON.stringify(userObj)
     this.setState({
       activeUser : userObj
     })
@@ -72,7 +76,7 @@ class App extends React.Component{
   }
 
 
-  //signup
+  //signup- adding newUser to allUsers state and to the activeUser
   addUser = (newUser) =>{
     localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(newUser))
     this.setState({
@@ -82,8 +86,9 @@ class App extends React.Component{
     window.location.href="/#/user"
   }
 
-  //add favorite book
+  //add favorite book and storge in localStorage and in activeUsers.favoriets state
   addBook = (book) => { 
+   localStorage.activeUser.favorites = JSON.stringify(this.state.activeUser.favorites.concat(book))
     this.setState({
       activeUser : 
       {...this.state.activeUser, favorites : this.state.activeUser.favorites.concat(book)

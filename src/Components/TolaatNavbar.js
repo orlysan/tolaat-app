@@ -22,9 +22,7 @@ class TolaatNavbar extends React.Component{
             })
         })
 
-        this.handleOption =() => {
-            window.location.href="/user"
-        }
+      
         // let friend = this.props.allUsers.filter(user => {
         //     if(user.name == e.target.value){
         //         return user.name;
@@ -33,9 +31,14 @@ class TolaatNavbar extends React.Component{
         //    this.setState({friendResult : friend})
             //return  <option>{user.name}</option>
     }
+ 
     
 
     render(){
+
+        this.handleOption = (e) => {
+            console.log(e)
+         }
         
         const loginEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/login">התחברות</Nav.Link> : null;
         const signupEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/signup">הרשמה</Nav.Link> : null;  
@@ -64,11 +67,11 @@ class TolaatNavbar extends React.Component{
                     
                         {searchEl}
                         <datalist id="brow">
-                             {this.state.friendResult.map(opt => <option onClick={this.handleOption}>{opt.name}</option>)}
+                            <select onChange={this.handleOption}>
+                             {this.state.friendResult.map(opt => 
+                             <option key={opt.id}>{opt.name}</option>)}
+                             </select>
                         </datalist>
-                        
-                       
-              
                         {signoutEl}  
                         {nameEl}
                         {loginEl}

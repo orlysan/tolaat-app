@@ -1,14 +1,23 @@
 
 .p-signup {
     margin: auto;
-    max-width: 70%;
-    
+    width: 100%;
+    max-width: 60%;
+    height: 100vh;
 }
-.signup-form{
-    margin-top: 3rem;
-}
+
 
 .signup-form > h1{
     text-align: center;
-    margin-bottom: 2rem;
+    padding:2rem;
+}
+
+.error-signup {
+    color:red;
+    font-size: 14px;
+    margin-right: 9rem;
+}
+
+.login-button {
+    background-color: royalblue !important;
 }
