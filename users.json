@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "name": "orly",
+        "email": "orlysan1@gmail.com",
+        "pwd": "123456",
+        "favorites": [{
+            "id": "", "review": ""
+        }]
+    } ,
+
+    {
+        "id": 2,
+        "name": "test",
+        "email": "test@gmail.com",
+        "pwd": "123456",
+        "favorites": [{
+            "id": "", "review": ""
+        }]
+    }
+]
