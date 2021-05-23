@@ -60,7 +60,7 @@ class TolaatNavbar extends React.Component{
                 <Nav.Link href="/#/week">ספרים לשבוע</Nav.Link>
                 <Nav.Link href="/#/reasonable">ספרים לבידוד סביר</Nav.Link>
                 <Nav.Link href="/#/not-for-me">זה לא לטעמי</Nav.Link>
-                <Nav.Link href="/#/classic">קלסיקות</Nav.Link>
+        
             
             
                 <Navbar.Collapse className="justify-content-end">

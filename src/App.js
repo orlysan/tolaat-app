@@ -10,7 +10,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import SingleBook from './Pages/SingleBook';
 import Category from './Pages/Category';
-import Classic from './Pages/Classic';
+
 
 
 
@@ -195,10 +195,6 @@ console.log(this.state.activeUser.favorites)
           allBooks={this.state.allBooks}
           userReview={this.handleUserReview}
         />   
-      </Route>
-
-      <Route exact path="/classic">
-          <Classic />
       </Route>
 
       </Container>
