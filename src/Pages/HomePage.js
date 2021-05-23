@@ -10,18 +10,22 @@ class HomePage extends React.Component{
       super(props)
       this.state = {
           newReview : [
-              {date : "17.3.21", id: 50},
-              {date : "15.3.21", id: 51},
-              {date : "13.3.21", id: 52},
+              {date : "17.3.21", id: 31},
+              {date : "15.3.21", id: 35},
+              {date : "13.3.21", id: 34},
           ]
       }
+  }
+
+  handleNewReview = (e) => {
+    window.location.href="/#/books/"+e.target.id
   }
     render(){
         //map and add new reviews
         const reviewEl = this.state.newReview.map(item => {
-            return  <Dropdown.Item href="#/books/10" > {item.date}</Dropdown.Item>
+            return  <Dropdown.Item id={item.id} onClick={this.handleNewReview}>{item.date}</Dropdown.Item>
         })
-        console.log(this.props.match)
+      
         return(
             <Container className="p-home">
                 <Jumbotron className="home-jumbo">

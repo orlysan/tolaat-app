@@ -11,11 +11,15 @@ class UserProfile extends React.Component{
      //geting favorites user books list
      getFavoriteBook = () => {
         const favoriteBooks = this.props.allBooks.filter(book =>{
-            return this.props.activeUser.favorites.includes(book.id)
+            return this.props.activeUser.favorites.id.includes(book.id)
         });
         return favoriteBooks
-      }    
-
+      }   
+      
+      //forward user review to parent component
+      userReview = (userReview) => {
+          this.props.userReview(userReview)
+      }
     render(){
 
         if( !this.props.activeUser) {
@@ -43,7 +47,10 @@ class UserProfile extends React.Component{
                     </Row>
                     
                 </Card>
-                <UserGallery favorite={favoriteList}/>
+                <UserGallery 
+                    favorite={favoriteList}
+                    userReview = {this.userReview}
+                    />
             </div>
         )
     }

@@ -59,7 +59,7 @@ class App extends React.Component{
     localStorage.setItem('allBooks', JSON.stringify(nextState.allBooks))
   }
 
-//login
+//login function and storage user in localstorage and in state
   login = (userObj) => {
     localStorage.activeUser = JSON.stringify(userObj)
     this.setState({
@@ -92,10 +92,27 @@ class App extends React.Component{
    //localStorage.activeUser.favorites = JSON.stringify(this.state.activeUser.favorites.concat(book))
     this.setState({
       activeUser : 
-      {...this.state.activeUser, favorites  : this.state.activeUser.favorites.concat(book)
+      {...this.state.activeUser, favorites  : {
+        id: book,
+        review:""
+      }
       }  
     })
-}  
+} 
+
+//update user review
+handleUserReview = (userReview) =>{
+  // this.setState({
+  //   activeUser : {
+  //     ...this.state.activeUser, favorites : {
+  //       id: 5,
+  //       review: userReview
+  //     }
+  //   }
+    
+  // })
+console.log(this.state.activeUser.favorites)
+}
 
   render(){
     
@@ -176,6 +193,7 @@ class App extends React.Component{
         <UserProfile
           activeUser={this.state.activeUser}
           allBooks={this.state.allBooks}
+          userReview={this.handleUserReview}
         />   
       </Route>
 

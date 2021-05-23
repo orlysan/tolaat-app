@@ -6,22 +6,27 @@ class UserGallery extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-              isModalOpen : false
+              isModalOpen : false,
+              userReview : ""
         }
     }
 
     //open and close modal function
     openModal = () => {this.setState({isModalOpen :true})}
     handleClose = () => {this.setState({isModalOpen :false})}
+    handleshow =() => {this.setState({isModalOpen:true})}
 
+    //Modal review controll input
+    updateReview = (e) => {
+        this.setState({userReview: e.target.value})
+    }
+
+    //save user review and forward data to parent component
     saveModalInfo = () => {
-        console.log('saved')
+        this.props.userReview(this.state.userReview)
     }
 
-    handleshow =(e) => {
-        this.setState({isModalOpen:true})
-            console.log(e.target)
-    }
+    
     render(){
         
         const book = this.props.favorite.map(book => {
@@ -50,7 +55,7 @@ class UserGallery extends React.Component{
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Control as="textarea" rows={3} placeholder="ההמלצה שלי"/>
+                        <Form.Control as="textarea" rows={3} placeholder="ההמלצה שלי" onChange={this.updateReview}/>
                     </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
