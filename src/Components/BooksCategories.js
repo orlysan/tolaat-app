@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 import './BooksCategories.css'
 
 class BooksCategories extends React.Component{
@@ -11,9 +12,9 @@ class BooksCategories extends React.Component{
 
     render(){
         return(
-          <div className="categories" onClick={this.clickCtegory}>
+          <Col sm={2} md={6} className="categories" onClick={this.clickCtegory}>
             <h1>{this.props.category}</h1>     
-          </div>
+          </Col>
            
         )
       

@@ -54,7 +54,7 @@ class TolaatNavbar extends React.Component{
                 />:null;
        
         return(
-            <Navbar expand="lg" className="tolaat-navbar">
+            <Navbar expand="lg" className="tolaat-navbar" navbar-Collapse Collapse>
                 <Navbar.Brand href="/#/">תולעת ספרים</Navbar.Brand>
                 <Nav.Link href="/#/forever">ספרים לנצח</Nav.Link>
                 <Nav.Link href="/#/week">ספרים לשבוע</Nav.Link>

@@ -19,7 +19,7 @@ class BookCard extends React.Component{
      const book =  this.props.getBook.map((book, index) => {
     
         return (
-            <Col xs={1} md={2} lg={4} className="book-card" key={index}>
+            <Col sm={1} md={6} lg={4} className="book-card" key={index}>
                 <img src={book.img} alt={book.alt}  
                     onClick={() => this.goToSingleBook(book.id)} 
                     >

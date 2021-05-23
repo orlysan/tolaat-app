@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Dropdown, Jumbotron } from 'react-bootstrap';
+import { Container, Dropdown, Jumbotron, Row } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 import BooksCategories from '../Components/BooksCategories';
 import './HomePage.css';
@@ -50,7 +50,7 @@ class HomePage extends React.Component{
                     <p>אוקיי?</p>
                 </div>
                
-                <div className="books-categories">
+                <Row className="books-categories">
                     <BooksCategories 
                         category= "כמו שאומרים בגן: זה לא לטעמי"
                         goto="not-for-me"
@@ -67,7 +67,7 @@ class HomePage extends React.Component{
                         category="ספרים שתזכרו לנצח נצחים"
                         goto="forever"
                         />
-                </div>
+                </Row>
 
                 <div className="summary"> 
                     <p>האתר עדיין בהרצה וגם יש לי חיים לתחזק. מבטיחה להעלות פה כל ספר חדש שאקרא</p>
