@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import { Form , Col , Row , Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Login extends React.Component{
     constructor(props){
@@ -33,7 +33,7 @@ class Login extends React.Component{
            return user.pwd === this.state.pwd && user.email === this.state.email;   
         })
         
-console.log(foundUser)
+       
         if(foundUser){
             this.props.login(foundUser);
             window.location.href = "/#/user";
@@ -48,8 +48,7 @@ console.log(foundUser)
   
 
     render(){
-        
-        console.log(this.props.allUsers)
+       
         return(
             <div className="p-login">
                 <h1 className="login-title">התחברות</h1>

@@ -42,6 +42,7 @@ class UserGallery extends React.Component{
                         id={book.id} 
                         className="user-book"
                         onClick={this.handleshow}
+
                         ></Card.Img>  
                         <Card.Text style={{height: "8rem"}}>{this.state.userReview}</Card.Text>  
                     </Card>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Row ,Col, Container } from 'react-bootstrap';
-import { Redirect } from 'react-router';
+import { Redirect, withRouter } from 'react-router';
 import UserGallery from '../Components/UserGallery';
 import './UserProfile.css';
 
@@ -55,4 +55,4 @@ class UserProfile extends React.Component{
     }
 }
 
-export default  UserProfile;
+export default withRouter (UserProfile);

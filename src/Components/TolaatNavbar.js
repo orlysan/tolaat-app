@@ -2,6 +2,7 @@ import React from 'react';
 import './TolaatNavbar.css'
 import { Navbar , Nav, Dropdown, Form, FormControl } from 'react-bootstrap';
 
+
 class TolaatNavbar extends React.Component{
    constructor(props){
     super(props)
@@ -28,16 +29,16 @@ class TolaatNavbar extends React.Component{
 
     render(){
         
-        this.handleOption = (e) => {
-            window.location.href="/user"+e.target.id
-            console.log(e.target.id)
+        this.handleOption = () => {
+            //window.location.href="/user"+e.target.id
+            this.props.friendResult(this.state.friendResult)
          }
         
         const loginEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/login">התחברות</Nav.Link> : null;
         const signupEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/signup">הרשמה</Nav.Link> : null;  
         const nameEl = (this.props.activeUser) ? <Nav.Link onClick={this.goToUser}>Hello {this.props.activeUser.name}</Nav.Link> : null;
         const signoutEl = (this.props.activeUser) ? <Nav.Link onClick={() => this.props.logout()} href="/#/">התנתקות</Nav.Link> : null;
-        const searchEl = (this.props.activeUser) ? 
+        const searchEl = (this.props.activeUser) ?  
             <FormControl
                 type="text"
                 className="tolaat-dropdown"  
@@ -45,13 +46,15 @@ class TolaatNavbar extends React.Component{
                 onChange={this.filterFriends}
                 value={this.state.searchFriend}
                 list="datalistOptions"
+                
             />:null;
+        const filterBtn = (this.state.searchFriend) ? <button onClick={this.handleOption}>בחר</button> : null;
        
         return(
-            <Navbar expand="lg" className="tolaat-navbar navbar navbar-expand-sm" sticky="top">
+            <Navbar expand="sm" className="tolaat-navbar navbar justify-space-between" sticky="top">
                 
                 <Navbar.Brand href="/#/">תולעת ספרים</Navbar.Brand>
-                <Navbar.Collapse id="basic-navbar-nav" className="justify-space-between">
+                <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav >
                 <Nav.Link href="/#/forever">ספרים לנצח</Nav.Link>
                 <Nav.Link href="/#/week">ספרים לשבוע</Nav.Link>
@@ -63,9 +66,10 @@ class TolaatNavbar extends React.Component{
                     <Nav className="nav-tolat-left">            
                         {searchEl}
                         <datalist id="datalistOptions">
-                            {this.state.friendResult.map(opt => <option onChange={this.handleOption}>{opt.name}</option>)}
+                            
+                            {this.state.friendResult.map(opt => <option>{opt.name}</option>)}
                         </datalist>
-                        
+                       {filterBtn}
                         {/* <ul  className="search-ul" id="datalistOptions"  onChange={this.handleOption}>
                             {this.state.friendResult.map(user => 
                             <li id={user.id} onClick={this.handleOption}>{user.name}</li>)}

@@ -133,6 +133,13 @@ handlOpenAccount = () => {
   
 }
 
+handleFriendResult = (friends) => {
+  const friendEl = friends.map(friend => {
+    return friend.id
+  })
+  console.log(friendEl)
+}
+
   render(){
     
   return (
@@ -143,6 +150,7 @@ handlOpenAccount = () => {
               allUsers={this.state.allUsers}
               activeUser = {this.state.activeUser}
               logout = {this.logout}
+              friendResult ={this.handleFriendResult}
             />
         </Route>
       <Container>
@@ -215,6 +223,8 @@ handlOpenAccount = () => {
           userReview={this.handleUserReview}
         />   
       </Route>
+
+      
 
       </Container>
       </div>
