@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/tolaat-app/static/css/main.af6bf245.chunk.css",
-    "main.js": "/tolaat-app/static/js/main.e8e3208d.chunk.js",
-    "main.js.map": "/tolaat-app/static/js/main.e8e3208d.chunk.js.map",
-    "runtime-main.js": "/tolaat-app/static/js/runtime-main.f7984279.js",
-    "runtime-main.js.map": "/tolaat-app/static/js/runtime-main.f7984279.js.map",
+    "main.css": "/tolaat-app/static/css/main.dfcf1519.chunk.css",
+    "main.js": "/tolaat-app/static/js/main.93656f63.chunk.js",
+    "main.js.map": "/tolaat-app/static/js/main.93656f63.chunk.js.map",
+    "runtime-main.js": "/tolaat-app/static/js/runtime-main.cc38634a.js",
+    "runtime-main.js.map": "/tolaat-app/static/js/runtime-main.cc38634a.js.map",
     "static/css/2.800be05e.chunk.css": "/tolaat-app/static/css/2.800be05e.chunk.css",
-    "static/js/2.a3eb5c0d.chunk.js": "/tolaat-app/static/js/2.a3eb5c0d.chunk.js",
-    "static/js/2.a3eb5c0d.chunk.js.map": "/tolaat-app/static/js/2.a3eb5c0d.chunk.js.map",
-    "static/js/3.ecf20c95.chunk.js": "/tolaat-app/static/js/3.ecf20c95.chunk.js",
-    "static/js/3.ecf20c95.chunk.js.map": "/tolaat-app/static/js/3.ecf20c95.chunk.js.map",
+    "static/js/2.4310027f.chunk.js": "/tolaat-app/static/js/2.4310027f.chunk.js",
+    "static/js/2.4310027f.chunk.js.map": "/tolaat-app/static/js/2.4310027f.chunk.js.map",
+    "static/js/3.3b6914d0.chunk.js": "/tolaat-app/static/js/3.3b6914d0.chunk.js",
+    "static/js/3.3b6914d0.chunk.js.map": "/tolaat-app/static/js/3.3b6914d0.chunk.js.map",
     "index.html": "/tolaat-app/index.html",
     "static/css/2.800be05e.chunk.css.map": "/tolaat-app/static/css/2.800be05e.chunk.css.map",
-    "static/css/main.af6bf245.chunk.css.map": "/tolaat-app/static/css/main.af6bf245.chunk.css.map",
-    "static/js/2.a3eb5c0d.chunk.js.LICENSE.txt": "/tolaat-app/static/js/2.a3eb5c0d.chunk.js.LICENSE.txt"
+    "static/css/main.dfcf1519.chunk.css.map": "/tolaat-app/static/css/main.dfcf1519.chunk.css.map",
+    "static/js/2.4310027f.chunk.js.LICENSE.txt": "/tolaat-app/static/js/2.4310027f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f7984279.js",
+    "static/js/runtime-main.cc38634a.js",
     "static/css/2.800be05e.chunk.css",
-    "static/js/2.a3eb5c0d.chunk.js",
-    "static/css/main.af6bf245.chunk.css",
-    "static/js/main.e8e3208d.chunk.js"
+    "static/js/2.4310027f.chunk.js",
+    "static/css/main.dfcf1519.chunk.css",
+    "static/js/main.93656f63.chunk.js"
   ]
 }

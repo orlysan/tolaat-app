@@ -2,20 +2,23 @@
     {
         "id": 1,
         "name": "orly",
+        "img":"https://picsum.photos/id/1005/200/300",
         "email": "orlysan1@gmail.com",
         "pwd": "123456",
+        "aboutMe": "המלצות מעולות! אשתף בהמשך את ההמלצות שלי",
         "favorites": [{
-            "id": "", "review": ""
+            "id":2, "review": "ספר חזק מאוד! אחד האהובים עלי"
         }]
     } ,
 
     {
         "id": 2,
         "name": "test",
+        "img":"https://picsum.photos/id/237/200/300",
         "email": "test@gmail.com",
         "pwd": "123456",
         "favorites": [{
-            "id": "", "review": ""
+            "id":null, "review": null
         }]
     }
 ]
