@@ -18,7 +18,7 @@ class HomePage extends React.Component{
   }
 
   handleNewReview = (e) => {
-    window.location.href="/#/books/"+e.target.id
+    window.location.href="#/books/"+e.target.id
   }
     render(){
         //map and add new reviews

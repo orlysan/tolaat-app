@@ -12,7 +12,7 @@ class TolaatNavbar extends React.Component{
     }
    }
     goToUser = () => {
-        window.location.href="/#/user"
+        window.location.href="#/user"
     }
     
     //filter from search and set to controll input
@@ -34,10 +34,10 @@ class TolaatNavbar extends React.Component{
             this.props.friendResult(this.state.friendResult)
          }
         
-        const loginEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/login">התחברות</Nav.Link> : null;
-        const signupEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/signup">הרשמה</Nav.Link> : null;  
+        const loginEl = ( ! this.props.activeUser) ? <Nav.Link href="#/login">התחברות</Nav.Link> : null;
+        const signupEl = ( ! this.props.activeUser) ? <Nav.Link href="#/signup">הרשמה</Nav.Link> : null;  
         const nameEl = (this.props.activeUser) ? <Nav.Link onClick={this.goToUser}>Hello {this.props.activeUser.name}</Nav.Link> : null;
-        const signoutEl = (this.props.activeUser) ? <Nav.Link onClick={() => this.props.logout()} href="/#/">התנתקות</Nav.Link> : null;
+        const signoutEl = (this.props.activeUser) ? <Nav.Link onClick={() => this.props.logout()} href="#/">התנתקות</Nav.Link> : null;
         const searchEl = (this.props.activeUser) ?  
             <FormControl
                 type="text"
@@ -53,28 +53,22 @@ class TolaatNavbar extends React.Component{
         return(
             <Navbar expand="sm" className="tolaat-navbar navbar justify-space-between" sticky="top">
                 
-                <Navbar.Brand href="/#/">תולעת ספרים</Navbar.Brand>
+                <Navbar.Brand href="#/">תולעת ספרים</Navbar.Brand>
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav >
-                <Nav.Link href="/#/forever">ספרים לנצח</Nav.Link>
-                <Nav.Link href="/#/week">ספרים לשבוע</Nav.Link>
-                <Nav.Link href="/#/reasonable">ספרים לבידוד סביר</Nav.Link>
-                <Nav.Link href="/#/not-for-me">זה לא לטעמי</Nav.Link>
+                <Nav.Link href="#/forever">ספרים לנצח</Nav.Link>
+                <Nav.Link href="#/week">ספרים לשבוע</Nav.Link>
+                <Nav.Link href="#/reasonable">ספרים לבידוד סביר</Nav.Link>
+                <Nav.Link href="#/not-for-me">זה לא לטעמי</Nav.Link>
                 </Nav>
             
                
                     <Nav className="nav-tolat-left">            
                         {searchEl}
                         <datalist id="datalistOptions">
-                            
                             {this.state.friendResult.map(opt => <option>{opt.name}</option>)}
                         </datalist>
-                       {filterBtn}
-                        {/* <ul  className="search-ul" id="datalistOptions"  onChange={this.handleOption}>
-                            {this.state.friendResult.map(user => 
-                            <li id={user.id} onClick={this.handleOption}>{user.name}</li>)}
-                        </ul> */}
-                        
+                        {filterBtn}
                         {signoutEl}  
                         {nameEl}
                         {loginEl}

@@ -83,7 +83,7 @@ class App extends React.Component{
       allUsers : this.state.allUsers.concat(newUser),
       activeUser : newUser
     })
-    window.location.href="/#/user"
+    window.location.href="#/user"
   }
 
   //add favorite book and storge in localStorage and in activeUsers.favoriets state
@@ -128,7 +128,7 @@ openModal = () => {this.setState({isModalOpen :true})}
 handleClose = () => {this.setState({isModalOpen :false})}
 handleshow =() => {this.setState({isModalOpen:true})}
 handlOpenAccount = () => {
-  window.location.href="/#/signup"
+  window.location.href="#/signup"
   this.setState({isModalOpen :false})
   
 }

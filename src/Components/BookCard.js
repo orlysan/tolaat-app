@@ -10,7 +10,7 @@ class BookCard extends React.Component{
    
     
     goToSingleBook = (id) =>{
-        window.location.href="/#/books/"+id
+        window.location.href="#/books/"+id
     }
 
     render(){

@@ -7,7 +7,7 @@ class BooksCategories extends React.Component{
     
     clickCtegory = () => {
       console.log(this.props.goto)
-     window.location.href=`/#/${this.props.goto}`
+     window.location.href=`#/${this.props.goto}`
     }
 
     render(){
