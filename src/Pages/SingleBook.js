@@ -7,7 +7,6 @@ import './SingleBook.css'
 class SingleBook extends React.Component{
    
     addToFavorite = (book) => {
-        console.log(this.props.activeUser)
         this.props.favorite(book.id)
         window.location.href="/#/user"
     }

@@ -1,14 +1,15 @@
 import React from 'react';
+import { Row } from 'react-bootstrap';
 import './CategoryHeader.css';
 
 class CategoryHeader extends React.Component{
   
    render(){
        return (
-           <div className="category-heder" >
+           <Row className="category-heder" >
                <img src="./homePageTitle.jpg" alt="people-reading"/>
                <h1>{this.props.categoryTitle}</h1>
-           </div>
+           </Row>
        )
    }
 }

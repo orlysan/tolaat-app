@@ -1,6 +1,6 @@
 import React from 'react';
 import './TolaatNavbar.css'
-import { Navbar , Nav, Dropdown, Form } from 'react-bootstrap';
+import { Navbar , Nav, Dropdown, Form, FormControl } from 'react-bootstrap';
 
 class TolaatNavbar extends React.Component{
    constructor(props){
@@ -14,6 +14,7 @@ class TolaatNavbar extends React.Component{
         window.location.href="/#/user"
     }
     
+    //filter from search and set to controll input
     filterFriends = (e) => {
         this.setState({
             searchFriend : e.target.value, 
@@ -21,23 +22,15 @@ class TolaatNavbar extends React.Component{
                 return user.name.toLowerCase().includes( e.target.value.toLowerCase())  
             })
         })
-
-      
-        // let friend = this.props.allUsers.filter(user => {
-        //     if(user.name == e.target.value){
-        //         return user.name;
-        //     }
-        // });
-        //    this.setState({friendResult : friend})
-            //return  <option>{user.name}</option>
-    }
+}
  
     
 
     render(){
-
+        
         this.handleOption = (e) => {
-            console.log(e)
+            window.location.href="/user"+e.target.id
+            console.log(e.target.id)
          }
         
         const loginEl = ( ! this.props.activeUser) ? <Nav.Link href="/#/login">התחברות</Nav.Link> : null;
@@ -45,38 +38,44 @@ class TolaatNavbar extends React.Component{
         const nameEl = (this.props.activeUser) ? <Nav.Link onClick={this.goToUser}>Hello {this.props.activeUser.name}</Nav.Link> : null;
         const signoutEl = (this.props.activeUser) ? <Nav.Link onClick={() => this.props.logout()} href="/#/">התנתקות</Nav.Link> : null;
         const searchEl = (this.props.activeUser) ? 
-            <Form.Control 
+            <FormControl
+                type="text"
                 className="tolaat-dropdown"  
-                type="text" placeholder="חפש חברים" 
+                placeholder="חפש חברים" 
                 onChange={this.filterFriends}
                 value={this.state.searchFriend}
-                list="brow"
-                />:null;
+                list="datalistOptions"
+            />:null;
        
         return(
-            <Navbar expand="lg" className="tolaat-navbar" navbar-Collapse Collapse>
+            <Navbar expand="lg" className="tolaat-navbar navbar navbar-expand-sm" sticky="top">
+                
                 <Navbar.Brand href="/#/">תולעת ספרים</Navbar.Brand>
+                <Navbar.Collapse id="basic-navbar-nav" className="justify-space-between">
+                    <Nav >
                 <Nav.Link href="/#/forever">ספרים לנצח</Nav.Link>
                 <Nav.Link href="/#/week">ספרים לשבוע</Nav.Link>
                 <Nav.Link href="/#/reasonable">ספרים לבידוד סביר</Nav.Link>
                 <Nav.Link href="/#/not-for-me">זה לא לטעמי</Nav.Link>
-        
+                </Nav>
             
-            
-                <Navbar.Collapse className="justify-content-end">
-                    
+               
+                    <Nav className="nav-tolat-left">            
                         {searchEl}
-                        <datalist id="brow">
-                            <select onChange={this.handleOption}>
-                             {this.state.friendResult.map(opt => 
-                             <option key={opt.id}>{opt.name}</option>)}
-                             </select>
+                        <datalist id="datalistOptions">
+                            {this.state.friendResult.map(opt => <option onChange={this.handleOption}>{opt.name}</option>)}
                         </datalist>
+                        
+                        {/* <ul  className="search-ul" id="datalistOptions"  onChange={this.handleOption}>
+                            {this.state.friendResult.map(user => 
+                            <li id={user.id} onClick={this.handleOption}>{user.name}</li>)}
+                        </ul> */}
+                        
                         {signoutEl}  
                         {nameEl}
                         {loginEl}
                         {signupEl}
-                 
+                    </Nav>
                 </Navbar.Collapse>
           </Navbar>
         )

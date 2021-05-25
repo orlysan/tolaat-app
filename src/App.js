@@ -7,12 +7,9 @@ import Signup from './Pages/Signup';
 import UserProfile from './Pages/UserProfile';
 import './App.css'
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Modal, Button } from 'react-bootstrap';
 import SingleBook from './Pages/SingleBook';
 import Category from './Pages/Category';
-
-
-
 
 
 class App extends React.Component{
@@ -22,15 +19,7 @@ class App extends React.Component{
       allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : [],
       allBooks : localStorage.allBooks ? JSON.parse(localStorage.allBooks) : [],
       activeUser : localStorage.activeUser ? JSON.parse(localStorage.activeUser) :  null,
-      // activeUser : {
-      //   name: 'Orly',
-      //   email: 'orlysan1@gmail.com',
-      //   pwd: '123',
-      //   aboutMe: 'my profile',
-      //   img: '/testImage.jpeg',
-      //   favorites: [{,}],
-      
-      // }
+      isModalOpen : false,
     }
   }
 
@@ -43,6 +32,7 @@ class App extends React.Component{
       this.setState({
         allUsers : data
       })
+      localStorage.allUsers = JSON.stringify(data)
     })
 
     //get books data
@@ -53,8 +43,16 @@ class App extends React.Component{
         allBooks :data
       })
     })
-  }
 
+
+    //showing modal as a popup
+    setTimeout( () =>{
+      this.openModal()
+    }, 5000)
+     
+  }
+ 
+//storage all book at localStorage
   componentDidUpdate(nextProps, nextState){
     localStorage.setItem('allBooks', JSON.stringify(nextState.allBooks))
   }
@@ -70,6 +68,7 @@ class App extends React.Component{
 
   //logout
   logout = () => {
+    localStorage.activeUser = null;
     this.setState({
       activeUser : null
     })
@@ -89,29 +88,49 @@ class App extends React.Component{
 
   //add favorite book and storge in localStorage and in activeUsers.favoriets state
   addBook = (book) => { 
-   //localStorage.activeUser.favorites = JSON.stringify(this.state.activeUser.favorites.concat(book))
+   
+   const favorites = this.state.activeUser.favorites.concat( 
+     {id: book,
+    review:""})
+    const localEl = {...this.state.activeUser, favorites  : favorites}
+    localStorage.activeUser = JSON.stringify(localEl)
     this.setState({
       activeUser : 
-      {...this.state.activeUser, favorites  : {
-        id: book,
-        review:""
-      }
-      }  
+    {...this.state.activeUser, favorites  : favorites}  
     })
+
+   
 } 
 
-//update user review
-handleUserReview = (userReview) =>{
-  // this.setState({
-  //   activeUser : {
-  //     ...this.state.activeUser, favorites : {
-  //       id: 5,
-  //       review: userReview
-  //     }
-  //   }
+//update user review and storage in localstorage and state
+handleUserReview = ( id , userReviewid) =>{
+  const favorites = this.state.activeUser.favorites.concat(
+    {id: id,
+    review : userReviewid}
+  )
+  const localReview = {...this.state.activeUser, favorites  : favorites}
+  localStorage.activeUser = JSON.stringify(localReview)
+  const addData = this.state.allUsers.filter(user => user.id == this.state.activeUser.id)
+  localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(localReview))
+  this.setState({
+      activeUser : {...this.state.activeUser, favorites  : favorites},
+      //allUsers : {...this.state.allUsers.filter(user => user.id == this.state.activeUser.id)}
+    })
     
-  // })
-console.log(this.state.activeUser.favorites)
+    console.log(this.state.allUsers)
+    console.log(addData)
+}
+
+
+
+//open and close modal function
+openModal = () => {this.setState({isModalOpen :true})}
+handleClose = () => {this.setState({isModalOpen :false})}
+handleshow =() => {this.setState({isModalOpen:true})}
+handlOpenAccount = () => {
+  window.location.href="/#/signup"
+  this.setState({isModalOpen :false})
+  
 }
 
   render(){
@@ -199,6 +218,23 @@ console.log(this.state.activeUser.favorites)
 
       </Container>
       </div>
+
+     
+    
+      <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
+        <Modal.Header>
+          <Modal.Title>עוד אין לכם חשבון?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>רוצים לקבל המלצות ולשתף את הספרים וההמלצות שלכם?  פתחו חשבון והצטרפו לקהילת התולעים</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={this.handleClose}>
+            סגור
+          </Button>
+          <Button variant="primary" onClick={this.handlOpenAccount}>
+            פתח חשבון
+          </Button>
+        </Modal.Footer>
+      </Modal>
      
     </HashRouter>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Row ,Col } from 'react-bootstrap';
+import { Card, Row ,Col, Container } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 import UserGallery from '../Components/UserGallery';
+import './UserProfile.css';
 
 class UserProfile extends React.Component{
     constructor(props){
@@ -9,17 +10,15 @@ class UserProfile extends React.Component{
     }
 
      //geting favorites user books list
+    
      getFavoriteBook = () => {
+        const favoriteIds =  this.props.activeUser.favorites.map( i => i.id);
         const favoriteBooks = this.props.allBooks.filter(book =>{
-            return this.props.activeUser.favorites.id.includes(book.id)
+            return favoriteIds.includes(book.id)
         });
         return favoriteBooks
       }   
       
-      //forward user review to parent component
-      userReview = (userReview) => {
-          this.props.userReview(userReview)
-      }
     render(){
 
         if( !this.props.activeUser) {
@@ -27,18 +26,18 @@ class UserProfile extends React.Component{
         }
      
         const favoriteList = this.getFavoriteBook()
-        
-       console.log(this.props.activeUser)
+   
         return(
-            <div className="p-user-profile">
+          
+            <Container>
                 <Card className="profile-card">
                     <Row>
-                        <Col sm={4}>
+                        <Col sm={3}>
                             <Card.Img className="card-img" variant="right" src={this.props.activeUser.img} />
                         </Col>
-                        <Col sm={8}>
+                        <Col sm={9}>
                             <Card.Body>
-                                <Card.Title>{this.props.activeUser.name}</Card.Title>
+                                <Card.Title className="user-title">{this.props.activeUser.name}</Card.Title>
                                 <Card.Text>
                                     {this.props.activeUser.aboutMe}
                                 </Card.Text>
@@ -49,9 +48,9 @@ class UserProfile extends React.Component{
                 </Card>
                 <UserGallery 
                     favorite={favoriteList}
-                    userReview = {this.userReview}
+                    userReview = {this.props.userReview}
                     />
-            </div>
+            </Container>
         )
     }
 }

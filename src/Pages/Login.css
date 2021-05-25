@@ -19,8 +19,9 @@
 }
 
 .login-button{
-    padding-top:2rem;
+   max-width: 29rem;
 }
+
 
 .signup-from-login{
     float:left;

@@ -35,10 +35,14 @@ class HomePage extends React.Component{
                         </Dropdown.Toggle>
                         <Dropdown.Menu>{reviewEl}</Dropdown.Menu>
                     </Dropdown>
-                    <h1>תולעת ספרים</h1>
-                    <h3>המלצות וביקורות ספרים למתקדמים</h3>
+                    <Row>
+                        <h1>תולעת ספרים</h1>
+                        <h3>המלצות וביקורות ספרים למתקדמים</h3>
+                    </Row>
+                    
+                   
                 </Jumbotron>
-                <div className="main-text">
+                <Container className="main-text">
                     <p>אני תולעת ספרים. תמיד הייתי.</p>
                     <p>ושנים שקשה לי למצוא המלצות טובות לספרים.</p>
                     <p>כותבת בגוגל "המלצות לספרים" ומקבלת או את הקאסיקות שקראתי בגיל 15, או ג'אנק. הרבה ג'אנק.</p>
@@ -52,7 +56,7 @@ class HomePage extends React.Component{
                     <p>אה, וגם אין כאן את הקלאסיקות המובנות מאליהן, מגרוסמן דרך אהבה בימי כולרה, מאה שנים של בדידות וכל השאר.</p>
                     <p>אם עדיין לא קראתם אותם אז בחייאת, זה הזמן להתחיל, ואחר כך נתקדם.</p>
                     <p>אוקיי?</p>
-                </div>
+                </Container>
                
                 <Row className="books-categories">
                     <BooksCategories 
@@ -73,7 +77,7 @@ class HomePage extends React.Component{
                         />
                 </Row>
 
-                <div className="summary"> 
+                <Container className="summary"> 
                     <p>האתר עדיין בהרצה וגם יש לי חיים לתחזק. מבטיחה להעלות פה כל ספר חדש שאקרא</p>
                     <p>מוזמנים להגיב ולכתוב לי</p>
                     <a href="mailto:michal_mor_1@yahoo.com" target="_blank" rel="noreferrer nofollow">michal_mor_1@yahoo.com</a >
@@ -82,7 +86,7 @@ class HomePage extends React.Component{
                         <div class="fb-like face-buttons" data-href="https://www.facebook.com/tolaatsfarim.michal" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
                     </div>
                     
-                </div>
+                </Container>
                
             </Container>
            

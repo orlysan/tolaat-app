@@ -1,6 +1,5 @@
 .tolaat-navbar {
-    direction: ltr;
-    position: sticky;
+    direction: rtl;
     top: 0;
     background-color: whitesmoke;
     padding:0.5rem;
@@ -8,4 +7,13 @@
 .tolaat-dropdown {
     z-index: 1;
     width: 15rem;
+}
+
+.search-ul{
+    list-style-type: none;
+}
+
+.nav-tolat-left{
+    margin-right:auto;
+  
 }

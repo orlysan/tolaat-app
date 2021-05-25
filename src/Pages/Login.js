@@ -80,12 +80,14 @@ console.log(foundUser)
                         </Col>
                     </Form.Group>
                     <span className="error-login">{this.state.error}</span>
-                    <Form.Group as={Row} className="login-button text-center">
+                    <Form.Group as={Row} >
                         <Col sm={{ span: 2, offset: 10 }}>
-                            <Button 
+                            
+                            <Button className="login-button"
                             type="button"
                             onClick={this.handleLogin}
                             >התחבר</Button>
+                            
                         </Col>
                     </Form.Group>
                 </Form>
