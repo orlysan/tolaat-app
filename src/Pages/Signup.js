@@ -10,6 +10,7 @@ class Signup extends React.Component{
         super(props)
         this.state= {
             newUser : {
+                id:'',
                 name: '',
                 email: '',
                 pwd: '',
@@ -70,6 +71,16 @@ class Signup extends React.Component{
     }
       
     render(){
+        //find last user id and add id for new user state
+            const allUsers = this.props.allUsers
+            const lastID =  allUsers[allUsers.length-1].id
+            const newId = lastID + 1 
+        this.setState(prevState => {
+            let newUser = Object.assign({}, prevState.newUser);
+            newUser.id = newId;
+            return newUser;
+        })
+          
         return(
             <div className='p-signup'>
                

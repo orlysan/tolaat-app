@@ -25,7 +25,7 @@ class App extends React.Component{
 
   
   componentDidMount = () => {
-    //get users data 
+    //get users data and storage at localStorage
     fetch('/users.json')
     .then(res => res.json())
     .then(data => {
@@ -35,13 +35,14 @@ class App extends React.Component{
       localStorage.allUsers = JSON.stringify(data)
     })
 
-    //get books data
+    //get books data and storage at localStorage
     fetch('books.json')
     .then(res => res.json())
     .then(data => {
       this.setState({
         allBooks :data
       })
+      localStorage.allBooks = JSON.stringify(data)
     })
 
 
@@ -52,37 +53,35 @@ class App extends React.Component{
      
   }
  
-//storage all book at localStorage
-  componentDidUpdate(nextProps, nextState){
-    localStorage.setItem('allBooks', JSON.stringify(nextState.allBooks))
-  }
 
 //login function and storage user in localstorage and in state
   login = (userObj) => {
-    localStorage.activeUser = JSON.stringify(userObj)
     this.setState({
       activeUser : userObj
     })
+    localStorage.activeUser = JSON.stringify(userObj)
   }
 
 
   //logout
   logout = () => {
-    localStorage.activeUser = null;
     this.setState({
       activeUser : null
     })
-
+    localStorage.activeUser = null;
   }
 
 
-  //signup- adding newUser to allUsers state and to the activeUser
+  //signup- adding newUser to allUsers state and to the activeUser, redirect to the user page
   addUser = (newUser) =>{
-    localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(newUser))
+  
+    
     this.setState({
       allUsers : this.state.allUsers.concat(newUser),
       activeUser : newUser
     })
+    localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(newUser))
+    console.log(newUser)
     window.location.href="#/user"
   }
 
@@ -128,7 +127,7 @@ openModal = () => {this.setState({isModalOpen :true})}
 handleClose = () => {this.setState({isModalOpen :false})}
 handleshow =() => {this.setState({isModalOpen:true})}
 handlOpenAccount = () => {
-  window.location.href="#/signup"
+  window.location.href="npm#/signup"
   this.setState({isModalOpen :false})
   
 }
@@ -141,7 +140,7 @@ handleFriendResult = (friends) => {
 }
 
   render(){
-    
+   
   return (
     <HashRouter>
       <div className="p-app">
@@ -207,6 +206,7 @@ handleFriendResult = (friends) => {
       <Route exact path="/signup">
         <Signup 
         addUser={this.addUser}
+        allUsers={this.state.allUsers}
         />   
       </Route>
 
