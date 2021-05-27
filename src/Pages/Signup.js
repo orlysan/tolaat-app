@@ -25,6 +25,7 @@ class Signup extends React.Component{
             confirmPwdError:'',
         }
     }
+
     
     handleChange = (e) => {
         this.setState(Object.assign(this.state.newUser, {
@@ -58,11 +59,16 @@ class Signup extends React.Component{
         return true
     }
 
+
+     //find last user id and add id for new user state
     handleAddUser = (e) => {
         e.preventDefault();
         const isValid = this.validate();
         if(isValid) {
-            this.props.addUser(this.state.newUser);
+            const allUsers = this.props.allUsers
+            const lastID =  allUsers[allUsers.length-1].id
+            const newId = lastID + 1    
+            this.props.addUser({...this.state.newUser, id : newId});
             this.state.emailError = "";
             this.state.nameError = "";
             this.state.pwdError ="";
@@ -70,17 +76,10 @@ class Signup extends React.Component{
         }
     }
       
-    render(){
-        //find last user id and add id for new user state
-            const allUsers = this.props.allUsers
-            const lastID =  allUsers[allUsers.length-1].id
-            const newId = lastID + 1 
-        this.setState(prevState => {
-            let newUser = Object.assign({}, prevState.newUser);
-            newUser.id = newId;
-            return newUser;
-        })
+    render(){ 
           
+         
+      
         return(
             <div className='p-signup'>
                

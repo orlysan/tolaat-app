@@ -74,8 +74,6 @@ class App extends React.Component{
 
   //signup- adding newUser to allUsers state and to the activeUser, redirect to the user page
   addUser = (newUser) =>{
-  
-    
     this.setState({
       allUsers : this.state.allUsers.concat(newUser),
       activeUser : newUser
