@@ -74,6 +74,7 @@ class Signup extends React.Component{
             this.state.pwdError ="";
             this.state.confiemPwd="";
         }
+        
     }
       
     render(){ 

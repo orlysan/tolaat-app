@@ -51,31 +51,31 @@ class TolaatNavbar extends React.Component{
         const filterBtn = (this.state.searchFriend) ? <button onClick={this.handleOption}>בחר</button> : null;
        
         return(
-            <Navbar expand="sm" className="tolaat-navbar navbar justify-space-between" sticky="top">
-                
+            <Navbar bg="light" expand="lg" sticky="top" className="tolaat-navbar navbar justify-space-between" >
                 <Navbar.Brand href="#/">תולעת ספרים</Navbar.Brand>
-                <Navbar.Collapse id="basic-navbar-nav" >
-                    <Nav >
-                <Nav.Link href="#/forever">ספרים לנצח</Nav.Link>
-                <Nav.Link href="#/week">ספרים לשבוע</Nav.Link>
-                <Nav.Link href="#/reasonable">ספרים לבידוד סביר</Nav.Link>
-                <Nav.Link href="#/not-for-me">זה לא לטעמי</Nav.Link>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                 <Nav className="mr-auto">
+                    <Nav.Link href="#/forever">ספרים לנצח</Nav.Link>
+                    <Nav.Link href="#/week">ספרים לשבוע</Nav.Link>
+                    <Nav.Link href="#/reasonable">ספרים לבידוד סביר</Nav.Link>
+                    <Nav.Link href="#/not-for-me">זה לא לטעמי</Nav.Link>
                 </Nav>
-            
-               
-                    <Nav className="nav-tolat-left">            
+                <Nav className="nav-tolat-left">            
                         {searchEl}
-                        <datalist id="datalistOptions">
-                            {this.state.friendResult.map(opt => <option>{opt.name}</option>)}
-                        </datalist>
+                            <datalist id="datalistOptions">
+                                    {this.state.friendResult.map(opt => <option>{opt.name}</option>)}
+                            </datalist>
                         {filterBtn}
                         {signoutEl}  
                         {nameEl}
                         {loginEl}
                         {signupEl}
-                    </Nav>
+                </Nav>
+  
                 </Navbar.Collapse>
-          </Navbar>
+            </Navbar>
+   
         )
     }
 }

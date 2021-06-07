@@ -47,9 +47,9 @@ class App extends React.Component{
 
 
     //showing modal as a popup
-    setTimeout( () =>{
-      this.openModal()
-    }, 5000)
+    // setTimeout( () =>{
+    //   this.openModal()
+    // }, 5000)
      
   }
  
@@ -74,6 +74,7 @@ class App extends React.Component{
 
   //signup- adding newUser to allUsers state and to the activeUser, redirect to the user page
   addUser = (newUser) =>{
+    console.log(newUser)
     this.setState({
       allUsers : this.state.allUsers.concat(newUser),
       activeUser : newUser
@@ -138,7 +139,6 @@ handleFriendResult = (friends) => {
 }
 
   render(){
-   
   return (
     <HashRouter>
       <div className="p-app">
