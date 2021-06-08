@@ -62,6 +62,7 @@ class Signup extends React.Component{
 
      //find last user id and add id for new user state
     handleAddUser = (e) => {
+      
         e.preventDefault();
         const isValid = this.validate();
         if(isValid) {

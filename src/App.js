@@ -80,13 +80,11 @@ class App extends React.Component{
 
   //signup- adding newUser to allUsers state and to the activeUser, redirect to the user page
   addUser = (newUser) =>{
-    console.log(newUser)
     this.setState({
       allUsers : this.state.allUsers.concat(newUser),
       activeUser : newUser
     })
     localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(newUser))
-    console.log(newUser)
     window.location.href="#/user"
   }
 
@@ -145,7 +143,7 @@ handleFriendResult = (friends) => {
 }
 
   render(){
-    console.log(localStorage)
+   
   return (
     <HashRouter>
       <div className="p-app">

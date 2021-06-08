@@ -6,8 +6,7 @@ class CategoryHeader extends React.Component{
   
    render(){
        return (
-           <Row className="category-heder" >
-               <img src="./homePageTitle.jpg" alt="people-reading"/>
+           <Row className="category-heder home-jumbo" >
                <h1>{this.props.categoryTitle}</h1>
            </Row>
        )
