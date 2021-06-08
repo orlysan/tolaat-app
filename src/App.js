@@ -10,40 +10,46 @@ import React from 'react';
 import { Container, Modal, Button } from 'react-bootstrap';
 import SingleBook from './Pages/SingleBook';
 import Category from './Pages/Category';
+import users from './Data/users.json';
+import books from './Data/books.json';
 
 
 class App extends React.Component{
   constructor(props){
     super(props)
+
+    //set data into storage
+    localStorage.setItem('allUsers', JSON.stringify(users))
+    localStorage.setItem('allBooks', JSON.stringify(books))
     this.state = {
-      allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : [],
-      allBooks : localStorage.allBooks ? JSON.parse(localStorage.allBooks) : [],
+      allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : users,
+      allBooks : localStorage.allBooks ? JSON.parse(localStorage.allBooks) : books,
       activeUser : localStorage.activeUser ? JSON.parse(localStorage.activeUser) :  null,
       isModalOpen : false,
     }
   }
 
-  
-  componentDidMount = () => {
-    //get users data and storage at localStorage
-    fetch('/users.json')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        allUsers : data
-      })
-      localStorage.allUsers = JSON.stringify(data)
-    })
+  //using fetch to load data:
+  // componentDidMount = () => {
+  //   //get users data and storage at localStorage
+  //   fetch('/users.json')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     this.setState({
+  //       allUsers : data
+  //     })
+  //     localStorage.allUsers = JSON.stringify(data)
+  //   })
 
-    //get books data and storage at localStorage
-    fetch('books.json')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        allBooks :data
-      })
-      localStorage.allBooks = JSON.stringify(data)
-    })
+  //   //get books data and storage at localStorage
+  //   fetch('books.json')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     this.setState({
+  //       allBooks :data
+  //     })
+  //     localStorage.allBooks = JSON.stringify(data)
+  //   })
 
 
     //showing modal as a popup
@@ -51,7 +57,7 @@ class App extends React.Component{
     //   this.openModal()
     // }, 5000)
      
-  }
+  //}
  
 
 //login function and storage user in localstorage and in state
@@ -139,6 +145,7 @@ handleFriendResult = (friends) => {
 }
 
   render(){
+    console.log(localStorage)
   return (
     <HashRouter>
       <div className="p-app">
