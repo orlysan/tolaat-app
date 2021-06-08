@@ -7,14 +7,19 @@ import './SingleBook.css'
 class SingleBook extends React.Component{
    
     addToFavorite = (book) => {
-        this.props.favorite(book.id)
-        window.location.href="#/user"
-    }
+        if(localStorage.getItem('activeUser') == null){
+            alert("כדי להוסיף למועדפים שלי עליך להירשם לאתר") 
+        } else {
+            this.props.favorite(book.id)
+            window.location.href="#/user"
+        }
+     }
 
     goBack = () => {
         window.history.back();
     }
     render(){
+        console.log(localStorage.getItem('activeUser'))
         const bookList = this.props.allBooks;
         const bookId = this.props.match.params.id;
         const book = bookList.find(book => {

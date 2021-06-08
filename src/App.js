@@ -89,18 +89,22 @@ class App extends React.Component{
   }
 
   //add favorite book and storge in localStorage and in activeUsers.favoriets state
+  //(only in case the book isn't in the favorites already)
   addBook = (book) => { 
-   
-   const favorites = this.state.activeUser.favorites.concat( 
-     {id: book,
-    review:""})
-    const localEl = {...this.state.activeUser, favorites  : favorites}
-    localStorage.activeUser = JSON.stringify(localEl)
-    this.setState({
-      activeUser : 
-    {...this.state.activeUser, favorites  : favorites}  
-    })
-
+   let foundId = this.state.activeUser.favorites.map(e => e.id)
+   let favoriteId = foundId.includes(parseInt(book))
+   if(!favoriteId){
+        const favorites = this.state.activeUser.favorites.concat( 
+        {id: book,
+        review:""})
+        const localEl = {...this.state.activeUser, favorites  : favorites}
+        console.log(localEl)
+        localStorage.activeUser = JSON.stringify(localEl)
+        this.setState({
+          activeUser : 
+        {...this.state.activeUser, favorites  : favorites}  
+        })
+   }
    
 } 
 

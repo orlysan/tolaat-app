@@ -4,9 +4,8 @@ import './BooksCategories.css'
 
 class BooksCategories extends React.Component{
    
-    
+  //redirect to category page 
   clickCatgory = () => {
-      console.log(this.props.goto)
      window.location.href=`#/${this.props.goto}`
     }
 
