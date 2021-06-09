@@ -7,7 +7,7 @@ class UserGallery extends React.Component{
         super(props)
         this.state = {
               isModalOpen : false,
-              userReview : "",
+              newUserReview : "",
               bookId: null
         }
     }
@@ -20,37 +20,59 @@ class UserGallery extends React.Component{
 
     //Modal review controll input
     updateReview = (e) => {
-        this.setState({userReview: e.target.value})
+        this.setState({newUserReview: e.target.value})
     }
 
     //save user review with book id and forward data to parent component
     saveModalInfo = () => {
-        this.props.userReview(this.state.bookId, this.state.userReview)
+        this.props.userReview(this.state.bookId, this.state.newUserReview)
        
     }
 
     
     render(){
-        
-        const book = this.props.favorite.map(book => {
+       
+        // const book = this.props.favorite.map(book => {
+        //     let showReview = JSON.parse(localStorage.activeUser).favorites.map(e => {
+        //         return e
+        //     })
+        //     console.log(showReview)
+        //     return (
+        //         <Col xs={1} md={2} lg={4}>
+        //             <Card className="reviewCard">
+        //                 <Card.Img variant="top" 
+        //                 src={book.img} 
+        //                 alt={book.alt} 
+        //                 id={book.id} 
+        //                 className="user-book"
+        //                 onClick={this.handleshow}
+
+        //                 ></Card.Img>  
+        //                 <Card.Text style={{height: "8rem"}}>{this.state.userReview}</Card.Text>  
+        //             </Card>
+                    
+        //         </Col>
+        //     )
+        // })
+        let book = JSON.parse(localStorage.activeUser).favorites.map(e =>{
+            
             return (
                 <Col xs={1} md={2} lg={4}>
                     <Card className="reviewCard">
                         <Card.Img variant="top" 
-                        src={book.img} 
-                        alt={book.alt} 
-                        id={book.id} 
-                        className="user-book"
-                        onClick={this.handleshow}
-
+                                src={e.img} 
+                                alt={e.alt} 
+                                id={e.id} 
+                                className="user-book"
+                                onClick={this.handleshow}
+        
                         ></Card.Img>  
-                        <Card.Text style={{height: "8rem"}}>{this.state.userReview}</Card.Text>  
+                        <Card.Text style={{height: "8rem"}}>{e.review}</Card.Text>  
                     </Card>
-                    
+                            
                 </Col>
             )
         })
-        
         
        
         return(

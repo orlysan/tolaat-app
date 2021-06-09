@@ -10,7 +10,7 @@ class SingleBook extends React.Component{
         if(localStorage.getItem('activeUser') == null){
             alert("כדי להוסיף למועדפים שלי עליך להירשם לאתר") 
         } else {
-            this.props.favorite(book.id)
+            this.props.favorite(book.id, book.img)
             window.location.href="#/user"
         }
      }
@@ -19,7 +19,6 @@ class SingleBook extends React.Component{
         window.history.back();
     }
     render(){
-        console.log(localStorage.getItem('activeUser'))
         const bookList = this.props.allBooks;
         const bookId = this.props.match.params.id;
         const book = bookList.find(book => {

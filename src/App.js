@@ -90,26 +90,37 @@ class App extends React.Component{
 
   //add favorite book and storge in localStorage and in activeUsers.favoriets state
   //(only in case the book isn't in the favorites already)
-  addBook = (book) => { 
+  addBook = (bookId, bookImg) => { 
    let foundId = this.state.activeUser.favorites.map(e => e.id)
-   let favoriteId = foundId.includes(parseInt(book))
+   let favoriteId = foundId.includes(parseInt(bookId))
    if(!favoriteId){
-        const favorites = this.state.activeUser.favorites.concat( 
-        {id: book,
-        review:""})
-        const localEl = {...this.state.activeUser, favorites  : favorites}
-        console.log(localEl)
+        const newFavorites = this.state.activeUser.favorites.concat( 
+        {id: bookId,
+        review:"",
+        img:bookImg})
+        const localEl = {...this.state.activeUser, favorites  : newFavorites}
         localStorage.activeUser = JSON.stringify(localEl)
-        this.setState({
-          activeUser : 
-        {...this.state.activeUser, favorites  : favorites}  
-        })
+        
+      //update allUsers with the new data
+      let userId = this.state.activeUser.id
+      let foundUser = this.state.allUsers.find(e => e.id == userId)
+       foundUser.favorites = newFavorites;
+
+      this.setState({
+        activeUser : 
+      {...this.state.activeUser, favorites  : newFavorites} ,
+      allUsers : 
+      this.state.allUsers 
+      })
+     localStorage.allUsers = JSON.stringify( this.state.allUsers )
+     
    }
    
 } 
 
 //update user review and storage in localstorage and state
 handleUserReview = ( id , userReviewid) =>{
+  console.log(id , userReviewid)
   const favorites = this.state.activeUser.favorites.concat(
     {id: id,
     review : userReviewid}
@@ -122,7 +133,7 @@ handleUserReview = ( id , userReviewid) =>{
       activeUser : {...this.state.activeUser, favorites  : favorites},
       //allUsers : {...this.state.allUsers.filter(user => user.id == this.state.activeUser.id)}
     })
-    
+    console.log(JSON.parse(localStorage.activeUser).favorites)
     console.log(this.state.allUsers)
     console.log(addData)
 }
