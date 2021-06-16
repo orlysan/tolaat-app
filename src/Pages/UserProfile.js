@@ -8,24 +8,28 @@ class UserProfile extends React.Component{
     constructor(props){
         super(props)
     }
+   
+    
+   
 
      //geting favorites user books list
     
-     getFavoriteBook = () => {
-        const favoriteIds =  this.props.activeUser.favorites.map( i => i.id);
-        const favoriteBooks = this.props.allBooks.filter(book =>{
-            return favoriteIds.includes(book.id)
-        });
-        return favoriteBooks
-      }   
+    //  getFavoriteBook = () => {
+    //     const favoriteIds =  this.props.activeUser.favorites.map( i => i.id);
+    //     const favoriteBooks = this.props.allBooks.filter(book =>{
+    //         return favoriteIds.includes(book.id)
+    //     });
+    //     return favoriteBooks
+    //   }   
+
+      
       
     render(){
-
         if( !this.props.activeUser) {
             return <Redirect to="/login" />
         }
      
-        const favoriteList = this.getFavoriteBook()
+        //const favoriteList = this.getFavoriteBook()
    
         return(
           
@@ -47,7 +51,7 @@ class UserProfile extends React.Component{
                     
                 </Card>
                 <UserGallery 
-                    favorite={favoriteList}
+                    //favorite={favoriteList}
                     userReview = {this.props.userReview}
                     />
             </Container>

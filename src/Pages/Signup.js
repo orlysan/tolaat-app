@@ -2,6 +2,7 @@ import React from 'react';
 import { Form , Row , Col , Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Signup.css';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -60,16 +61,18 @@ class Signup extends React.Component{
     }
 
 
-     //find last user id and add id for new user state
+     //create user id and add id for new user state
     handleAddUser = (e) => {
       
         e.preventDefault();
         const isValid = this.validate();
         if(isValid) {
-            const allUsers = this.props.allUsers
-            const lastID =  allUsers[allUsers.length-1].id
-            const newId = lastID + 1    
-            this.props.addUser({...this.state.newUser, id : newId});
+            
+            // const allUsers = this.props.allUsers
+            // const lastID =  allUsers[allUsers.length-1].id
+            const newId = uuidv4()
+            const copyOfNewUser = ({...this.state.newUser, id : newId})
+            this.props.addUser(copyOfNewUser);
             this.state.emailError = "";
             this.state.nameError = "";
             this.state.pwdError ="";
@@ -80,8 +83,6 @@ class Signup extends React.Component{
       
     render(){ 
           
-         
-      
         return(
             <div className='p-signup'>
                

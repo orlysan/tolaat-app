@@ -10,24 +10,39 @@ import React from 'react';
 import { Container, Modal, Button } from 'react-bootstrap';
 import SingleBook from './Pages/SingleBook';
 import Category from './Pages/Category';
-import users from './Data/users.json';
+//import users from './Data/users.json';
 import books from './Data/books.json';
+//import axios from 'axios';
 
 
 class App extends React.Component{
   constructor(props){
     super(props)
 
+    // const firstUser = [{
+    //   "id": 1,
+    //   "name": "orly",
+    //   "img":"https://picsum.photos/id/1005/200/300",
+    //   "email": "orlysan1@gmail.com",
+    //   "pwd": "123456",
+    //   "aboutMe": "המלצות מעולות! אשתף בהמשך את ההמלצות שלי",
+    //   "favorites": [{
+    //       "id":2, 
+    //       "review": "ספר חזק מאוד! אחד האהובים עלי", 
+    //       "img":"https://www.am-oved.co.il/Media/Uploads/%D7%A2%D7%98%D7%99%D7%A4%D7%94_-_%D7%A9%D7%A0%D7%AA_%D7%94%D7%91%D7%A9%D7%A8%D7%99%D7%9D_%D7%A9%D7%9C%D7%99(2).jpg"
+    //   }]
+    // }]
     //set data into storage
-    localStorage.setItem('allUsers', JSON.stringify(users))
+    //localStorage.setItem('allUsers', JSON.stringify(firstUser))
     localStorage.setItem('allBooks', JSON.stringify(books))
     this.state = {
-      allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : users,
+      allUsers : localStorage.allUsers ? JSON.parse(localStorage.allUsers) : [],
       allBooks : localStorage.allBooks ? JSON.parse(localStorage.allBooks) : books,
       activeUser : localStorage.activeUser ? JSON.parse(localStorage.activeUser) :  null,
       isModalOpen : false,
     }
   }
+
 
   //using fetch to load data:
   // componentDidMount = () => {
@@ -80,12 +95,14 @@ class App extends React.Component{
 
   //signup- adding newUser to allUsers state and to the activeUser, redirect to the user page
   addUser = (newUser) =>{
+    
     this.setState({
-      allUsers : this.state.allUsers.concat(newUser),
-      activeUser : newUser
+      activeUser : newUser,
+      allUsers : this.state.allUsers.concat(newUser)
     })
     localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(newUser))
-    window.location.href="#/user"
+    localStorage.activeUser = JSON.stringify(newUser)
+    window.location.href="#/user/:id"
   }
 
   //add favorite book and storge in localStorage and in activeUsers.favoriets state
@@ -100,43 +117,47 @@ class App extends React.Component{
         img:bookImg})
         const localEl = {...this.state.activeUser, favorites  : newFavorites}
         localStorage.activeUser = JSON.stringify(localEl)
-        
+      
       //update allUsers with the new data
       let userId = this.state.activeUser.id
       let foundUser = this.state.allUsers.find(e => e.id == userId)
        foundUser.favorites = newFavorites;
-
+       
       this.setState({
         activeUser : 
       {...this.state.activeUser, favorites  : newFavorites} ,
       allUsers : 
       this.state.allUsers 
       })
-     localStorage.allUsers = JSON.stringify( this.state.allUsers )
-     
-   }
+     localStorage.allUsers = JSON.stringify( this.state.allUsers ) 
+    } else {
+      window.location.href="#/user/:id"
+    } 
+   
    
 } 
 
 //update user review and storage in localstorage and state
-handleUserReview = ( id , userReviewid) =>{
-  console.log(id , userReviewid)
-  const favorites = this.state.activeUser.favorites.concat(
-    {id: id,
-    review : userReviewid}
-  )
-  const localReview = {...this.state.activeUser, favorites  : favorites}
-  localStorage.activeUser = JSON.stringify(localReview)
-  const addData = this.state.allUsers.filter(user => user.id == this.state.activeUser.id)
-  localStorage.allUsers = JSON.stringify( this.state.allUsers.concat(localReview))
-  this.setState({
-      activeUser : {...this.state.activeUser, favorites  : favorites},
-      //allUsers : {...this.state.allUsers.filter(user => user.id == this.state.activeUser.id)}
+    handleUserReview = ( bookId  , userReviewid) =>{
+      this.state.activeUser.favorites.map(e => {
+        if(e.id == bookId){
+          const favorite=[...this.state.activeUser["favorites"]];
+          favorite.map((book)=>{
+            if(book.id==bookId){
+              book.review = userReviewid
+            }
+        })
+             
+      this.setState({
+        activeUser:[...this.state.activeUser["favorites"]]=favorite,
+        allUsers : this.state.allUsers 
+      })
+               
+      localStorage.activeUser = JSON.stringify( this.state.activeUser ) 
+      localStorage.allUsers = JSON.stringify( this.state.allUsers ) 
+      }  
     })
-    console.log(JSON.parse(localStorage.activeUser).favorites)
-    console.log(this.state.allUsers)
-    console.log(addData)
-}
+  }
 
 
 
@@ -158,11 +179,11 @@ handleFriendResult = (friends) => {
 }
 
   render(){
-   
+
   return (
     <HashRouter>
       <div className="p-app">
-        <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me",   "/user" , "/classic"]}> 
+        <Route exact path={["/" , "/forever" , "/week", "/reasonable" , "/not-for-me",   "/user" , "/classic", "/user/:id"]}> 
           <TolaatNavbar
               allUsers={this.state.allUsers}
               activeUser = {this.state.activeUser}
@@ -234,7 +255,7 @@ handleFriendResult = (friends) => {
         login={this.login}/>   
       </Route>
 
-      <Route exact path="/user">
+      <Route exact path="/user/:id">
         <UserProfile
           activeUser={this.state.activeUser}
           allBooks={this.state.allBooks}

@@ -11,7 +11,7 @@ class SingleBook extends React.Component{
             alert("כדי להוסיף למועדפים שלי עליך להירשם לאתר") 
         } else {
             this.props.favorite(book.id, book.img)
-            window.location.href="#/user"
+            window.location.href="#/user/:id"
         }
      }
 

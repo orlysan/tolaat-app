@@ -14,3 +14,25 @@
     height: 10rem;
     margin:2rem 3.5rem;
 }
+
+.card-text {
+    height: 8rem;
+    padding-right:2rem;
+}
+
+
+#close {
+    visibility: hidden;
+    width: 2rem;
+    height: 2rem;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+}
+#close:hover {
+    visibility: visible;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    color:#fff;
+}

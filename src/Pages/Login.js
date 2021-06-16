@@ -30,13 +30,14 @@ class Login extends React.Component{
     handleLogin = () => {
       
       const foundUser =  this.props.allUsers.find(user => {
+        
            return user.pwd === this.state.pwd && user.email === this.state.email;   
         })
         
        
         if(foundUser){
             this.props.login(foundUser);
-            window.location.href = "#/user";
+            window.location.href = "#/user/"+foundUser.id;
             this.setState({error:''})
 
         } else {
@@ -48,7 +49,6 @@ class Login extends React.Component{
   
 
     render(){
-       
         return(
             <div className="p-login">
                 <h1 className="login-title">התחברות</h1>

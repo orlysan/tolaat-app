@@ -8,7 +8,8 @@ class UserGallery extends React.Component{
         this.state = {
               isModalOpen : false,
               newUserReview : "",
-              bookId: null
+              bookId: null,
+              isRemoveModalOpen : false
         }
     }
 
@@ -16,6 +17,7 @@ class UserGallery extends React.Component{
     openModal = () => {this.setState({isModalOpen :true})}
     handleClose = () => {this.setState({isModalOpen :false})}
     handleshow =(e) => {
+        
         this.setState({isModalOpen:true , bookId: e.target.id})}
 
     //Modal review controll input
@@ -24,9 +26,15 @@ class UserGallery extends React.Component{
     }
 
     //save user review with book id and forward data to parent component
-    saveModalInfo = () => {
+    saveModalInfo = () => { 
         this.props.userReview(this.state.bookId, this.state.newUserReview)
-       
+        this.setState({isModalOpen :false})
+    }
+
+    //remove card from favorite list
+    removeCard = () =>{
+        this.setState({isRemoveModalOpen : true})
+        console.log("remove")
     }
 
     
@@ -59,6 +67,7 @@ class UserGallery extends React.Component{
             return (
                 <Col xs={1} md={2} lg={4}>
                     <Card className="reviewCard">
+                    <button type="button" class="btn-close" aria-label="Close" onClick={this.removeCard}></button>
                         <Card.Img variant="top" 
                                 src={e.img} 
                                 alt={e.alt} 
@@ -67,9 +76,8 @@ class UserGallery extends React.Component{
                                 onClick={this.handleshow}
         
                         ></Card.Img>  
-                        <Card.Text style={{height: "8rem"}}>{e.review}</Card.Text>  
-                    </Card>
-                            
+                        <Card.Text>{e.review}</Card.Text>  
+                    </Card>          
                 </Col>
             )
         })
@@ -97,6 +105,24 @@ class UserGallery extends React.Component{
                     </Button>
                     </Modal.Footer>
             </Modal>
+
+            <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
           </Container>
         )
     }
