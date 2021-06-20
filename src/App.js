@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+//import axios from 'axios';
 import { HashRouter, Route } from "react-router-dom";
 import TolaatNavbar from "./Components/TolaatNavbar";
 import HomePage from "./Pages/HomePage";
@@ -12,27 +13,12 @@ import SingleBook from "./Pages/SingleBook";
 import Category from "./Pages/Category";
 //import users from './Data/users.json';
 import books from "./Data/books.json";
-//import axios from 'axios';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // const firstUser = [{
-    //   "id": 1,
-    //   "name": "orly",
-    //   "img":"https://picsum.photos/id/1005/200/300",
-    //   "email": "orlysan1@gmail.com",
-    //   "pwd": "123456",
-    //   "aboutMe": "המלצות מעולות! אשתף בהמשך את ההמלצות שלי",
-    //   "favorites": [{
-    //       "id":2,
-    //       "review": "ספר חזק מאוד! אחד האהובים עלי",
-    //       "img":"https://www.am-oved.co.il/Media/Uploads/%D7%A2%D7%98%D7%99%D7%A4%D7%94_-_%D7%A9%D7%A0%D7%AA_%D7%94%D7%91%D7%A9%D7%A8%D7%99%D7%9D_%D7%A9%D7%9C%D7%99(2).jpg"
-    //   }]
-    // }]
-    //set data into storage
-    //localStorage.setItem('allUsers', JSON.stringify(firstUser))
     localStorage.setItem("allBooks", JSON.stringify(books));
     this.state = {
       allUsers: localStorage.allUsers ? JSON.parse(localStorage.allUsers) : [],
@@ -58,6 +44,7 @@ class App extends React.Component {
   //     localStorage.allUsers = JSON.stringify(data)
   //   })
 
+
   //   //get books data and storage at localStorage
   //   fetch('books.json')
   //   .then(res => res.json())
@@ -68,7 +55,7 @@ class App extends React.Component {
   //     localStorage.allBooks = JSON.stringify(data)
   //   })
 
-  //showing modal as a popup
+  //showing modal as a popup  
   // setTimeout( () =>{
   //   this.openModal()
   // }, 5000)
