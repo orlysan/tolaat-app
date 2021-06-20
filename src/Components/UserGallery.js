@@ -31,43 +31,30 @@ class UserGallery extends React.Component{
         this.setState({isModalOpen :false})
     }
 
-    //remove card from favorite list
+    //open the remove book modal
     removeCard = () =>{
         this.setState({isRemoveModalOpen : true})
-        console.log("remove")
+    }
+
+    //close remove moadal
+    closeRemoveModal =() =>{
+        this.setState({isRemoveModalOpen: false})
+    }
+
+    removeBookFromFav = (id) =>{
+        console.log(id)
+        this.closeRemoveModal()
     }
 
     
     render(){
        
-        // const book = this.props.favorite.map(book => {
-        //     let showReview = JSON.parse(localStorage.activeUser).favorites.map(e => {
-        //         return e
-        //     })
-        //     console.log(showReview)
-        //     return (
-        //         <Col xs={1} md={2} lg={4}>
-        //             <Card className="reviewCard">
-        //                 <Card.Img variant="top" 
-        //                 src={book.img} 
-        //                 alt={book.alt} 
-        //                 id={book.id} 
-        //                 className="user-book"
-        //                 onClick={this.handleshow}
-
-        //                 ></Card.Img>  
-        //                 <Card.Text style={{height: "8rem"}}>{this.state.userReview}</Card.Text>  
-        //             </Card>
-                    
-        //         </Col>
-        //     )
-        // })
         let book = JSON.parse(localStorage.activeUser).favorites.map(e =>{
             
             return (
                 <Col xs={1} md={2} lg={4}>
                     <Card className="reviewCard">
-                    <button type="button" class="btn-close" aria-label="Close" onClick={this.removeCard}></button>
+                    <button type="button" class="btn-close" aria-label="Close" onClick={()=>this.removeCard(e.id)}></button>
                         <Card.Img variant="top" 
                                 src={e.img} 
                                 alt={e.alt} 
@@ -106,23 +93,18 @@ class UserGallery extends React.Component{
                     </Modal.Footer>
             </Modal>
 
-            <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+            <Modal show={this.state.isRemoveModalOpen} name={this.state.bookId}>
+                <Modal.Body className="m-auto">את/ה בטוח/ה שברצונך להסיר את הספר מהרשימה?</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={this.closeRemoveModal}>
+                        בטל/י
+                    </Button>
+                    <Button variant="primary" onClick={this.removeBookFromFav}>
+                        הסר/י
+                    </Button>
+                    </Modal.Footer>
+            </Modal>
+    
           </Container>
         )
     }

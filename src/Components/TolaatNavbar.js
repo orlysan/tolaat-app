@@ -30,7 +30,6 @@ class TolaatNavbar extends React.Component{
     render(){
         
         this.handleOption = () => {
-            //window.location.href="/user"+e.target.id
             this.props.friendResult(this.state.friendResult)
          }
         
